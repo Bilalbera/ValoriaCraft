@@ -3,120 +3,592 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tek Sayfa Web Sitesi</title>
+    <title>VALORİA CRAFT | BoxPvP Sunucusu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* CSS kodları buraya gelecek */
+        /* Global Ayarlar */
+        :root {
+            --main-bg-color: #1a1a1a;
+            --secondary-bg-color: #2c2c2c;
+            --accent-color: #FFC107; /* VALORİA CRAFT turuncumsu sarısı */
+            --text-color: #e0e0e0;
+            --border-color: #444;
+            --shadow-color: rgba(0, 0, 0, 0.4);
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
+            background-color: var(--main-bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden; /* Yatay kaydırmayı engelle */
         }
-        header {
-            background-color: #333;
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Orbitron', sans-serif; /* Daha keskin ve modern font */
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
             color: #fff;
-            padding: 1rem 0;
-            text-align: center;
         }
-        nav ul {
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px 0;
+        }
+
+        /* Header / Navbar */
+        header {
+            background-color: var(--secondary-bg-color);
+            padding: 15px 0;
+            border-bottom: 2px solid var(--border-color);
+            box-shadow: 0 4px 8px var(--shadow-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.2em;
+            font-weight: 700;
+            color: var(--accent-color);
+            text-shadow: 0 0 10px rgba(255, 193, 7, 0.5);
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: #fff;
+        }
+
+        .nav-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1em;
+            color: var(--text-color);
+            padding: 5px 0;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Banner/Hero Bölümü */
+        .hero {
+            position: relative;
+            height: 600px; /* Daha yüksek bir hero alanı */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            overflow: hidden;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://i.imgur.com/your-boxpvp-background-image.jpg') no-repeat center center/cover; /* BoxPvP temalı arka plan */
+            border-bottom: 3px solid var(--accent-color);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Hafif karartma */
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 4.5em; /* Daha büyük başlık */
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px var(--accent-color), 0 0 10px #000;
+            color: var(--accent-color); /* Logoyla aynı renk */
+            line-height: 1;
+        }
+
+        .hero p {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero .ip-address {
+            background-color: var(--secondary-bg-color);
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8em;
+            font-weight: bold;
+            display: inline-block;
+            border: 2px solid var(--accent-color);
+            box-shadow: 0 0 15px var(--accent-color), 0 0 5px rgba(0,0,0,0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .hero .ip-address:hover {
+            background-color: var(--accent-color);
+            color: var(--main-bg-color);
+            transform: translateY(-5px);
+        }
+
+        /* Bölüm Stili */
+        section {
+            padding: 60px 0;
+            background-color: var(--main-bg-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        section:nth-of-type(even) {
+            background-color: var(--secondary-bg-color);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3em;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        /* Kart Stilleri */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background-color: var(--secondary-bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 8px 16px var(--shadow-color);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background-color: var(--accent-color);
+            transform: translateY(-100%);
+            transition: transform 0.3s ease-out;
+        }
+
+        .card:hover::before {
+            transform: translateY(0);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px var(--shadow-color);
+        }
+
+        .card h3 {
+            color: var(--accent-color);
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .card p {
+            color: var(--text-color);
+        }
+
+        /* Sunucu Durumu */
+        .server-status-box {
+            background-color: var(--secondary-bg-color);
+            border: 2px solid var(--accent-color);
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 0 20px var(--accent-color), 0 0 10px rgba(0,0,0,0.5);
+            max-width: 400px;
+            margin: 50px auto 0 auto;
+        }
+
+        .server-status-box h3 {
+            margin-top: 0;
+            color: var(--accent-color);
+            font-size: 2em;
+        }
+
+        .status-indicator {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        .status-online {
+            background-color: #4CAF50; /* Yeşil */
+            box-shadow: 0 0 8px #4CAF50;
+        }
+
+        .status-offline {
+            background-color: #F44336; /* Kırmızı */
+            box-shadow: 0 0 8px #F44336;
+        }
+
+        .player-count {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #fff;
+            margin-top: 15px;
+        }
+
+        /* Kurallar Listesi */
+        .rules-list {
             list-style: none;
             padding: 0;
         }
-        nav ul li {
-            display: inline;
-            margin: 0 15px;
-        }
-        nav ul li a {
-            color: #fff;
-            text-decoration: none;
-        }
-        .container {
-            width: 80%;
-            margin: auto;
-            overflow: hidden;
-            padding: 20px 0;
-        }
-        section {
-            background-color: #fff;
-            margin-bottom: 20px;
-            padding: 20px;
+
+        .rules-list li {
+            background-color: var(--secondary-bg-color);
+            border: 1px solid var(--border-color);
+            padding: 15px 20px;
+            margin-bottom: 10px;
             border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: flex-start;
+            box-shadow: 0 2px 5px var(--shadow-color);
         }
-        footer {
-            background-color: #333;
-            color: #fff;
+
+        .rules-list li::before {
+            content: '»';
+            color: var(--accent-color);
+            font-size: 1.5em;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        /* Ekip Kartları */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .team-member {
+            background-color: var(--secondary-bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 25px;
             text-align: center;
-            padding: 1rem 0;
-            position: relative;
-            bottom: 0;
-            width: 100%;
+            box-shadow: 0 6px 12px var(--shadow-color);
+            transition: transform 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-8px);
+        }
+
+        .team-member img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent-color);
+            margin-bottom: 15px;
+            box-shadow: 0 0 10px var(--accent-color);
+        }
+
+        .team-member h4 {
+            color: #fff;
+            font-size: 1.5em;
+            margin-bottom: 5px;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .team-member p {
+            color: var(--text-color);
+            font-size: 0.95em;
+        }
+
+        /* Sosyal Medya */
+        .social-links {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin: 0 15px;
+            font-size: 2.5em;
+            color: var(--text-color);
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+            transform: translateY(-5px) scale(1.1);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #111;
+            color: var(--text-color);
+            text-align: center;
+            padding: 30px 0;
+            border-top: 2px solid var(--border-color);
+            font-size: 0.9em;
+        }
+
+        /* Responsive Tasarım */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+            }
+            .nav-links {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .nav-links li {
+                margin: 0 10px 10px 10px;
+            }
+            .hero h1 {
+                font-size: 3em;
+            }
+            .hero p {
+                font-size: 1.2em;
+            }
+            .hero .ip-address {
+                font-size: 1.5em;
+                padding: 10px 20px;
+            }
+            .section-title {
+                font-size: 2.5em;
+            }
+            .card-grid, .team-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Web Sitem</h1>
-        <nav>
-            <ul>
-                <li><a href="#hakkimda">Hakkımda</a></li>
-                <li><a href="#hizmetler">Hizmetler</a></li>
-                <li><a href="#iletisim">İletişim</a></li>
-            </ul>
-        </nav>
+        <div class="navbar container">
+            <div class="logo">VALORİA<span>CRAFT</span></div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home">Ana Sayfa</a></li>
+                    <li><a href="#features">Özellikler</a></li>
+                    <li><a href="#rules">Kurallar</a></li>
+                    <li><a href="#team">Ekip</a></li>
+                    <li><a href="https://store.valoracraft.com" target="_blank">Mağaza</a></li> </ul>
+            </nav>
+        </div>
     </header>
 
-    <div class="container">
-        <section id="hakkimda">
-            <h2>Hakkımda</h2>
-            <p>Bu, hakkımda bölümüdür. Kendimi tanıtan bilgiler burada yer alacak.</p>
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>VALORİA CRAFT</h1>
+                <p>Heyecan Dolu BoxPvP Deneyimi - Sürüm 1.20.1</p>
+                <div class="ip-address" id="ip-display">PLAY.VALORIACRAFT.COM</div>
+            </div>
         </section>
 
-        <section id="hizmetler">
-            <h2>Hizmetler</h2>
-            <p>Sunduğum hizmetler hakkında detaylı bilgiler burada bulunacak.</p>
-            <ul>
-                <li>Web Tasarım</li>
-                <li>Mobil Uygulama Geliştirme</li>
-                <li>Danışmanlık</li>
-            </ul>
+        <section id="features">
+            <div class="container">
+                <h2 class="section-title">Neden VALORİA CRAFT?</h2>
+                <div class="card-grid">
+                    <div class="card">
+                        <h3>Eşsiz BoxPvP Deneyimi</h3>
+                        <p>Kendi kutunuzda gelişin, diğer oyuncularla savaşın ve liderlik tablosunda zirveye ulaşın!</p>
+                    </div>
+                    <div class="card">
+                        <h3>Denge Ayarlı Ekonomi</h3>
+                        <p>Adil ve dengeli bir ekonomi ile emeğinizin karşılığını alın. Ticaret yapın ve zenginleşin.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Aktif ve Dost Canlısı Topluluk</h3>
+                        <p>Her zaman size destek olmaya hazır, büyüyen Discord sunucumuza katılın ve yeni arkadaşlar edinin.</p>
+                    </div>
+                    <div class="card">
+                        <h3>7/24 Sunucu Erişimi</h3>
+                        <p>Kesintisiz oyun keyfi için yüksek performanslı sunucularımızla her zaman online'ız.</p>
+                    </div>
+                </div>
+
+                <div class="server-status-box">
+                    <h3>Sunucu Durumu</h3>
+                    <p><span class="status-indicator status-online"></span> Durum: <strong style="color: #4CAF50;">Online</strong></p>
+                    <p class="player-count">Oyuncu Sayısı: <span id="player-count">--</span> / 500</p>
+                </div>
+            </div>
         </section>
 
-        <section id="iletisim">
-            <h2>İletişim</h2>
-            <p>Benimle iletişime geçmek için aşağıdaki formu kullanabilirsiniz.</p>
-            <form>
-                <label for="ad">Adınız:</label><br>
-                <input type="text" id="ad" name="ad"><br><br>
-                <label for="email">E-posta:</label><br>
-                <input type="email" id="email" name="email"><br><br>
-                <label for="mesaj">Mesajınız:</label><br>
-                <textarea id="mesaj" name="mesaj" rows="4"></textarea><br><br>
-                <input type="submit" value="Gönder">
-            </form>
+        <section id="rules">
+            <div class="container">
+                <h2 class="section-title">Sunucu Kuralları</h2>
+                <ul class="rules-list">
+                    <li>Küfür, hakaret ve argo kelimeler kullanmak kesinlikle yasaktır.</li>
+                    <li>Hile (hacks, cheats) ve yasa dışı istemciler kullanmak ban sebebidir.</li>
+                    <li>Başka sunucuların reklamını yapmak yasaktır.</li>
+                    <li>Oyun içi hataları (bug) veya açıkları kötüye kullanmak yasaktır.</li>
+                    <li>Spam yapmak veya flood atmak yasaktır.</li>
+                    <li>Herkes birbirine saygılı davranmalıdır.</li>
+                    <li>VALORİA CRAFT yönetimi, kuralları değiştirme hakkını saklı tutar.</li>
+                </ul>
+            </div>
         </section>
-    </div>
+
+        <section id="team">
+            <div class="container">
+                <h2 class="section-title">Ekibimiz</h2>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <img src="https://crafatar.com/avatars/MHF_Steve" alt="Admin Steve"> <h4>AdminName</h4>
+                        <p>Kurucu & Geliştirici</p>
+                    </div>
+                    <div class="team-member">
+                        <img src="https://crafatar.com/avatars/MHF_Alex" alt="Mod Alex"> <h4>ModName</h4>
+                        <p>Moderasyon Lideri</p>
+                    </div>
+                    <div class="team-member">
+                        <img src="https://crafatar.com/avatars/MHF_Herobrine" alt="Destek Hero"> <h4>SupportName</h4>
+                        <p>Destek Ekibi</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="social">
+            <div class="container">
+                <h2 class="section-title">Bizi Takip Edin!</h2>
+                <div class="social-links">
+                    <a href="https://discord.gg/yourdiscordlink" target="_blank" title="Discord"><i class="fab fa-discord"></i></a>
+                    <a href="https://youtube.com/yourchannel" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://twitter.com/yourtwitter" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+                </div>
+            </div>
+        </section>
+    </main>
 
     <footer>
-        <p>&copy; 2025 Valoria Craft Tüm Hakları Saklıdır.</p>
+        <div class="container">
+            <p>&copy; 2025 Valoria Craft. Tüm Hakları Saklıdır.</p>
+        </div>
     </footer>
 
     <script>
-        // JavaScript kodları buraya gelecek
         document.addEventListener('DOMContentLoaded', function() {
-            // Basit bir konsol mesajı
-            console.log('Web sitesi yüklendi!');
-
-            // Form gönderildiğinde bir uyarı gösterme
-            const contactForm = document.querySelector('#iletisim form');
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(event) {
-                    event.preventDefault(); // Sayfanın yeniden yüklenmesini engeller
-                    alert('Mesajınız başarıyla gönderildi! (Bu sadece bir örnek uyarıdır)');
-                    // Burada formu gerçek bir sunucuya gönderme veya başka işlemler yapabilirsiniz.
+            // IP Adresi Kopyalama Fonksiyonu
+            const ipDisplay = document.getElementById('ip-display');
+            ipDisplay.addEventListener('click', function() {
+                const ipText = ipDisplay.textContent;
+                navigator.clipboard.writeText(ipText).then(function() {
+                    alert('IP Adresi kopyalandı: ' + ipText);
+                }, function(err) {
+                    console.error('IP Adresi kopyalanamadı: ', err);
                 });
+            });
+
+            // Gerçek zamanlı sunucu durumu (Placeholder - API entegrasyonu için)
+            // Bu kısım genellikle bir sunucu API'sinden veri çeker.
+            // Örnek bir simülasyon:
+            function updateServerStatus() {
+                const playerCountElement = document.getElementById('player-count');
+                // Gerçek bir senaryoda burası fetch API ile bir sunucuya istek atardı:
+                // fetch('YOUR_SERVER_STATUS_API_ENDPOINT')
+                // .then(response => response.json())
+                // .then(data => {
+                //     playerCountElement.textContent = data.players.online;
+                // })
+                // .catch(error => console.error('Sunucu durumu alınamadı:', error));
+
+                // Şimdilik rastgele bir sayı atayalım (örnek amaçlı)
+                const randomPlayers = Math.floor(Math.random() * 250) + 50; // 50-300 arası
+                playerCountElement.textContent = randomPlayers;
             }
+
+            // Sayfa yüklendiğinde ve her 30 saniyede bir güncelle
+            updateServerStatus();
+            setInterval(updateServerStatus, 30000); // 30 saniyede bir güncelle
+
+            // Smooth Scroll (Yumuşak Kaydırma)
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
         });
     </script>
 </body>
