@@ -540,7 +540,8 @@
                 <ul class="nav-links">
                     <li><a href="#home" class="active">Ana Sayfa</a></li>
                     <li><a href="#features">Özellikler</a></li>
-                    <li><a href="#news">Haberler</a></li> <li><a href="#rules">Kurallar</a></li>
+                    <li><a href="#news">Haberler</a></li>
+                    <li><a href="#rules">Kurallar</a></li>
                     <li><a href="#team">Ekip</a></li>
                     <li><a href="store.html">Mağaza</a></li>
                 </ul>
@@ -600,7 +601,7 @@
                                 <span><i class="fas fa-calendar-alt"></i> 10 Ekim 2023</span>
                                 <span><i class="fas fa-user"></i> AdminName</span>
                             </div>
-                            <a href="#" class="read-more-button">Devamını Oku</a>
+                            <a href="news-detail.html?id=1" class="read-more-button">Devamını Oku</a>
                         </div>
                     </div>
 
@@ -613,7 +614,7 @@
                                 <span><i class="fas fa-calendar-alt"></i> 25 Ekim 2023</span>
                                 <span><i class="fas fa-user"></i> ModName</span>
                             </div>
-                            <a href="#" class="read-more-button">Devamını Oku</a>
+                            <a href="news-detail.html?id=2" class="read-more-button">Devamını Oku</a>
                         </div>
                     </div>
 
@@ -626,7 +627,7 @@
                                 <span><i class="fas fa-calendar-alt"></i> 05 Kasım 2023</span>
                                 <span><i class="fas fa-user"></i> AdminName</span>
                             </div>
-                            <a href="#" class="read-more-button">Devamını Oku</a>
+                            <a href="news-detail.html?id=3" class="read-more-button">Devamını Oku</a>
                         </div>
                     </div>
                 </div>
@@ -691,7 +692,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             // IP Adresi Kopyalama Fonksiyonu
             const ipDisplay = document.getElementById('ip-display');
-            if (ipDisplay) { // IP Display elementinin varlığını kontrol et
+            if (ipDisplay) {
                 ipDisplay.addEventListener('click', function() {
                     const ipText = ipDisplay.textContent;
                     navigator.clipboard.writeText(ipText).then(function() {
@@ -705,7 +706,7 @@
             // Gerçek zamanlı sunucu durumu (Placeholder - API entegrasyonu için)
             function updateServerStatus() {
                 const playerCountElement = document.getElementById('player-count');
-                if (playerCountElement) { // Player Count elementinin varlığını kontrol et
+                if (playerCountElement) {
                     const randomPlayers = Math.floor(Math.random() * 250) + 50; // 50-300 arası
                     playerCountElement.textContent = randomPlayers;
                 }
@@ -739,7 +740,6 @@
             });
 
             // Sayfa yüklendiğinde mevcut URL'ye göre aktif navigasyon linkini işaretle
-            // Bu kısım tek sayfa uygulamalarda #hash'ler için gereklidir.
             const handleHashChange = () => {
                 const hash = window.location.hash || '#home';
                 document.querySelectorAll('.nav-links a').forEach(link => {
@@ -748,6 +748,13 @@
                         link.classList.add('active');
                     }
                 });
+                // Eğer URL bir .html dosyası ise, ilgili navigasyon linkini aktif yap
+                const currentPath = window.location.pathname.split('/').pop();
+                if (currentPath === 'store.html') {
+                    document.querySelector('.nav-links a[href="store.html"]').classList.add('active');
+                } else if (currentPath === 'news-detail.html') {
+                    document.querySelector('.nav-links a[href="#news"]').classList.add('active');
+                }
             };
 
             window.addEventListener('hashchange', handleHashChange);
