@@ -470,6 +470,132 @@
             transform: translateY(-3px);
         }
 
+        /* Destek / SSS Bölümü Stili */
+        #support {
+            background-color: var(--main-bg-color);
+        }
+
+        .support-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); /* İki sütunlu düzen */
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .faq-section {
+            background-color: var(--secondary-bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 8px 16px var(--shadow-color);
+        }
+
+        .faq-section h3 {
+            text-align: center;
+            color: #fff;
+            font-size: 2.2em;
+            margin-bottom: 30px;
+        }
+
+        .faq-item {
+            margin-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--main-bg-color); /* Soru arka planı */
+            padding: 15px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #fff;
+            transition: background-color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background-color: #3a3a3a; /* Hover efekti */
+        }
+
+        .faq-question .icon {
+            font-size: 1.2em;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-question.active .icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 15px 20px;
+            background-color: #252525; /* Cevap arka planı */
+            border-top: 1px dashed var(--border-color);
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+            display: none; /* Varsayılan olarak gizli */
+            font-size: 0.95em;
+            color: var(--text-color);
+        }
+
+        .discord-support-section {
+            background-color: var(--secondary-bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 8px 16px var(--shadow-color);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .discord-support-section h3 {
+            color: #fff;
+            font-size: 2.2em;
+            margin-bottom: 20px;
+        }
+
+        .discord-support-section p {
+            font-size: 1.1em;
+            margin-bottom: 30px;
+            max-width: 400px;
+        }
+
+        .discord-button {
+            display: inline-flex; /* İkon ve metin yan yana */
+            align-items: center;
+            background-color: #7289DA; /* Discord mavisi */
+            color: #fff;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2em;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .discord-button i {
+            margin-right: 10px;
+            font-size: 1.5em;
+        }
+
+        .discord-button:hover {
+            background-color: #677BC4;
+            transform: translateY(-5px);
+        }
+
 
         /* Sosyal Medya */
         .social-links {
@@ -501,6 +627,12 @@
         }
 
         /* Responsive Tasarım */
+        @media (max-width: 992px) { /* İki sütundan tek sütuna geçiş */
+            .support-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
         @media (max-width: 768px) {
             .navbar {
                 flex-direction: column;
@@ -543,7 +675,7 @@
                     <li><a href="#news">Haberler</a></li>
                     <li><a href="#rules">Kurallar</a></li>
                     <li><a href="#team">Ekip</a></li>
-                    <li><a href="store.html">Mağaza</a></li>
+                    <li><a href="#support">Destek</a></li> <li><a href="store.html">Mağaza</a></li>
                 </ul>
             </nav>
         </div>
@@ -669,97 +801,23 @@
             </div>
         </section>
 
-        <section id="social">
-            <div class="container">
-                <h2 class="section-title">Bizi Takip Edin!</h2>
-                <div class="social-links">
-                    <a href="https://discord.gg/yourdiscordlink" target="_blank" title="Discord"><i class="fab fa-discord"></i></a>
-                    <a href="https://youtube.com/yourchannel" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-                    <a href="https://twitter.com/yourtwitter" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2023 VALORİA CRAFT. Tüm Hakları Saklıdır.</p>
-            <p>Made with ❤️ for the community.</p>
-        </div>
-    </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // IP Adresi Kopyalama Fonksiyonu
-            const ipDisplay = document.getElementById('ip-display');
-            if (ipDisplay) {
-                ipDisplay.addEventListener('click', function() {
-                    const ipText = ipDisplay.textContent;
-                    navigator.clipboard.writeText(ipText).then(function() {
-                        alert('IP Adresi kopyalandı: ' + ipText);
-                    }, function(err) {
-                        console.error('IP Adresi kopyalanamadı: ', err);
-                    });
-                });
-            }
-
-            // Gerçek zamanlı sunucu durumu (Placeholder - API entegrasyonu için)
-            function updateServerStatus() {
-                const playerCountElement = document.getElementById('player-count');
-                if (playerCountElement) {
-                    const randomPlayers = Math.floor(Math.random() * 250) + 50; // 50-300 arası
-                    playerCountElement.textContent = randomPlayers;
-                }
-            }
-
-            // Sayfa yüklendiğinde ve her 30 saniyede bir güncelle (sadece element varsa)
-            if (document.getElementById('player-count')) {
-                updateServerStatus();
-                setInterval(updateServerStatus, 30000); // 30 saniyede bir güncelle
-            }
-
-            // Smooth Scroll (Yumuşak Kaydırma)
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-
-                    const targetId = this.getAttribute('href').substring(1);
-                    const targetElement = document.getElementById(targetId);
-
-                    if (targetElement) {
-                        targetElement.scrollIntoView({
-                            behavior: 'smooth'
-                        });
-                    }
-                    // Navigasyon linklerini kontrol et ve aktif sınıfını yönet
-                    document.querySelectorAll('.nav-links a').forEach(link => {
-                        link.classList.remove('active');
-                    });
-                    this.classList.add('active');
-                });
-            });
-
-            // Sayfa yüklendiğinde mevcut URL'ye göre aktif navigasyon linkini işaretle
-            const handleHashChange = () => {
-                const hash = window.location.hash || '#home';
-                document.querySelectorAll('.nav-links a').forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === hash) {
-                        link.classList.add('active');
-                    }
-                });
-                // Eğer URL bir .html dosyası ise, ilgili navigasyon linkini aktif yap
-                const currentPath = window.location.pathname.split('/').pop();
-                if (currentPath === 'store.html') {
-                    document.querySelector('.nav-links a[href="store.html"]').classList.add('active');
-                } else if (currentPath === 'news-detail.html') {
-                    document.querySelector('.nav-links a[href="#news"]').classList.add('active');
-                }
-            };
-
-            window.addEventListener('hashchange', handleHashChange);
-            handleHashChange(); // Sayfa yüklendiğinde de çalıştır
-        });
-    </script>
-</body>
-</html>
+        <section id="support"> <div class="container">
+                <h2 class="section-title">Destek & Sıkça Sorulan Sorular</h2>
+                <div class="support-content">
+                    <div class="faq-section">
+                        <h3>Sıkça Sorulan Sorular</h3>
+                        <div class="faq-list">
+                            <div class="faq-item">
+                                <div class="faq-question">
+                                    Sunucuya nasıl katılırım? <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                                </div>
+                                <div class="faq-answer">
+                                    Minecraft oyununuzu açın, "Çok Oyunculu" kısmına tıklayın, "Sunucu Ekle" butonuna basın ve sunucu adresi olarak <strong>PLAY.VALORIACRAFT.COM</strong> yazın. Ardından sunucuya katılabilirsiniz.
+                                </div>
+                            </div>
+                            <div class="faq-item">
+                                <div class="faq-question">
+                                    Sunucuda hangi oyun modları var? <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                                </div>
+                                <div class="faq-answer">
+                                    VALORİA CRAFT, ağırlıklı olarak BoxPvP modunda hizmet vermektedir.
