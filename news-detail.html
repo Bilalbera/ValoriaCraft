@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VALORİA CRAFT | Haber Detayı</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        /* Global Ayarlar (index.html ile uyumlu) */
+        :root {
+            --main-bg-color: #1a1a1a;
+            --secondary-bg-color: #2c2c2c;
+            --accent-color: #FFC107; /* VALORİA CRAFT turuncumsu sarısı */
+            --text-color: #e0e0e0;
+            --border-color: #444;
+            --shadow-color: rgba(0, 0, 0, 0.4);
+            --button-hover-bg: #e6b100;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--main-bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #fff;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1000px; /* Haber detayı için daha dar bir konteyner */
+            margin: auto;
+            padding: 20px 0;
+        }
+
+        /* Header / Navbar (index.html ile aynı) */
+        header {
+            background-color: var(--secondary-bg-color);
+            padding: 15px 0;
+            border-bottom: 2px solid var(--border-color);
+            box-shadow: 0 4px 8px var(--shadow-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.2em;
+            font-weight: 700;
+            color: var(--accent-color);
+            text-shadow: 0 0 10px rgba(255, 193, 7, 0.5);
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: #fff;
+        }
+
+        .nav-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1em;
+            color: var(--text-color);
+            padding: 5px 0;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+        .nav-links a.active {
+            color: var(--accent-color);
+        }
+
+        /* Haber Detay Bölümü */
+        .news-detail-section {
+            padding: 60px 0;
+            background-color: var(--main-bg-color);
+        }
+
+        .news-detail-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .news-detail-header h1 {
+            font-size: 3.5em;
+            color: #fff;
+            text-shadow: 0 0 15px var(--accent-color);
+        }
+
+        .news-detail-meta {
+            font-size: 1em;
+            color: #888;
+            margin-top: -10px;
+        }
+
+        .news-detail-meta span {
+            margin: 0 10px;
+        }
+        .news-detail-meta i {
+            margin-right: 5px;
+            color: var(--accent-color);
+        }
+
+        .news-detail-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            border: 2px solid var(--border-color);
+            box-shadow: 0 8px 16px var(--shadow-color);
+        }
+
+        .news-detail-content {
+            background-color: var(--secondary-bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 8px 16px var(--shadow-color);
+        }
+
+        .news-detail-content h2 {
+            font-size: 2.5em;
+            margin-top: 0;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        .news-detail-content p {
+            margin-bottom: 20px;
+            font-size: 1.05em;
+            line-height: 1.8;
+            color: var(--text-color);
+        }
+
+        /* Footer (index.html ile aynı) */
+        footer {
+            background-color: #111;
+            color: var(--text-color);
+            text-align: center;
+            padding: 30px 0;
+            border-top: 2px solid var(--border-color);
+            font-size: 0.9em;
+            margin-top: 60px;
+        }
+
+        /* Responsive Tasarım */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+            }
+            .nav-links {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .nav-links li {
+                margin: 0 10px 10px 10px;
+            }
+            .news-detail-header h1 {
+                font-size: 2.5em;
+            }
+            .news-detail-image {
+                height: 250px;
+            }
+            .news-detail-content h2 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="navbar container">
+            <a href="index.html" class="logo">VALORİA<span>CRAFT</span></a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html#home">Ana Sayfa</a></li>
+                    <li><a href="index.html#features">Özellikler</a></li>
+                    <li><a href="index.html#news" class="active">Haberler</a></li>
+                    <li><a href="index.html#rules">Kurallar</a></li>
+                    <li><a href="index.html#team">Ekip</a></li>
+                    <li><a href="store.html">Mağaza</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="news-detail-section">
+            <div class="container">
+                <div class="news-detail-header">
+                    <h1 id="news-title"></h1>
+                    <div class="news-detail-meta">
+                        <span id="news-date"><i class="fas fa-calendar-alt"></i> </span>
+                        <span id="news-author"><i class="fas fa-user"></i> </span>
+                    </div>
+                </div>
+
+                <img src="" alt="Haber Görseli" class="news-detail-image" id="news-image">
+
+                <div class="news-detail-content" id="news-content-area">
+                    </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 VALORİA CRAFT. Tüm Hakları Saklıdır.</p>
+            <p>Made with ❤️ for the community.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const newsData = {
+                1: {
+                    title: "Yeni BoxPvP Sezonu Başladı!",
+                    date: "10 Ekim 2023",
+                    author: "AdminName",
+                    image: "https://i.imgur.com/news_update_1.jpg",
+                    content: `
+                        <h2>Büyük Yenilikler ve Heyecan Dolu Mücadeleler</h2>
+                        <p>Değerli VALORİA CRAFT oyuncuları!</p>
+                        <p>Uzun süredir beklenen yeni BoxPvP sezonumuz resmi olarak başlamıştır! Sunucumuza getirdiğimiz birbirinden harika yenilikler ve geliştirmelerle sizlere unutulmaz bir oyun deneyimi sunmayı hedefliyoruz. Yepyeni bir harita tasarımı, optimize edilmiş PvP dengeleri ve özel sezonluk etkinliklerle dolu bu sezonda sizleri çok daha rekabetçi ve eğlenceli bir ortam bekliyor.</p>
+                        <p>Yeni harita, stratejik bölgeler ve gizli geçitlerle dolu, PvP mücadelelerini daha dinamik hale getirecek şekilde özel olarak hazırlandı. Ayrıca, yeni sezonla birlikte oyuna eklenen özel eşyalar ve kostümlerle karakterinizi kişiselleştirebilir, rakiplerinize karşı avantaj sağlayabilirsiniz.</p>
+                        <p>Sezon boyunca düzenleyeceğimiz haftalık ve aylık turnuvalarla yeteneklerinizi sergileyebilir, büyük ödüllerin sahibi olabilirsiniz. Liderlik tablosunda zirveye oynamak ve adınızı VALORİA CRAFT tarihine yazdırmak için hemen oyuna katılın!</p>
+                        <p>Tüm oyuncularımıza yeni sezonda başarılar ve iyi eğlenceler dileriz.</p>
+                        <p>Saygılarımızla,<br>VALORİA CRAFT Yönetim Ekibi</p>
+                    `
+                },
+                2: {
+                    title: "Cadılar Bayramı Özel Etkinliği!",
+                    date: "25 Ekim 2023",
+                    author: "ModName",
+                    image: "https://i.imgur.com/news_event_2.jpg",
+                    content: `
+                        <h2>Korkunç İndirimler ve Sürpriz Ödüller!</h2>
+                        <p>VALORİA CRAFT'ın korkunç ama bir o kadar da eğlenceli Cadılar Bayramı etkinliği başladı! Bu özel etkinlikte sizlere birbirinden fantastik fırsatlar sunuyoruz.</p>
+                        <p>Mağazamızda Cadılar Bayramı'na özel %30'a varan indirimler, sınırlı sayıda üretilmiş korkutucu kostümler ve özel sandık anahtarları sizleri bekliyor. Bu anahtarlardan çıkan efsanevi Cadılar Bayramı eşyaları ile sunucudaki en göz alıcı oyuncu siz olabilirsiniz!</p>
+                        <p>Ayrıca, oyun içinde düzenlediğimiz "Hayalet Avı" etkinliğine katılarak nadir eşyalar ve ekstra oyun parası kazanma şansını yakalayın. Her gece belli saatlerde ortaya çıkacak hayaletleri avlayarak puan toplayın ve liderlik tablosunda yerinizi alın.</p>
+                        <p>Cadılar Bayramı ruhunu VALORİA CRAFT'ta doyasıya yaşayın!</p>
+                        <p>İyi eğlenceler dileriz,<br>VALORİA CRAFT Ekibi</p>
+                    `
+                },
+                3: {
+                    title: "Sunucu Bakım ve Yama Notları",
+                    date: "05 Kasım 2023",
+                    author: "AdminName",
+                    image: "https://i.imgur.com/news_patch_3.jpg",
+                    content: `
+                        <h2>Performans İyileştirmeleri ve Hata Düzeltmeleri</h2>
+                        <p>Tüm VALORİA CRAFT oyuncularına duyuru!</p>
+                        <p>Sunucumuzda yapılan planlı bakım çalışması tamamlanmıştır. Bu bakım sırasında birçok önemli iyileştirme ve hata düzeltmesi yapılmıştır. Oyun deneyiminizi daha akıcı ve sorunsuz hale getirmek için performans optimizasyonları yapıldı ve bazı gecikme sorunları giderildi.</p>
+                        <p><strong>Yama Notları:</strong></p>
+                        <ul>
+                            <li>Sunucu performansında genel artış ve lag azalması.</li>
+                            <li>Bazı eşyaların envanterde doğru görünmeme hatası düzeltildi.</li>
+                            <li>PvP dengelemelerinde küçük ayarlamalar yapıldı.</li>
+                            <li>Anti-hile sistemimiz güncellenerek daha etkili hale getirildi.</li>
+                            <li>Birkaç görsel hata ve yazım yanlışı giderildi.</li>
+                        </ul>
+                        <p>Anlayışınız için teşekkür eder, iyi oyunlar dileriz.</p>
+                        <p>VALORİA CRAFT Yönetimi</p>
+                    `
+                }
+                // Gelecekteki haberler buraya eklenebilir
+            };
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const newsId = urlParams.get('id');
+
+            const newsTitleElement = document.getElementById('news-title');
+            const newsDateElement = document.getElementById('news-date');
+            const newsAuthorElement = document.getElementById('news-author');
+            const newsImageElement = document.getElementById('news-image');
+            const newsContentArea = document.getElementById('news-content-area');
+            const pageTitleElement = document.querySelector('title');
+
+
+            if (newsId && newsData[newsId]) {
+                const newsItem = newsData[newsId];
+                pageTitleElement.textContent = `VALORİA CRAFT | ${newsItem.title}`;
+                newsTitleElement.textContent = newsItem.title;
+                newsDateElement.innerHTML = `<i class="fas fa-calendar-alt"></i> ${newsItem.date}`;
+                newsAuthorElement.innerHTML = `<i class="fas fa-user"></i> ${newsItem.author}`;
+                newsImageElement.src = newsItem.image;
+                newsContentArea.innerHTML = newsItem.content;
+            } else {
+                // Haber bulunamazsa veya ID geçersizse varsayılan bir mesaj göster
+                pageTitleElement.textContent = "VALORİA CRAFT | Haber Bulunamadı";
+                newsTitleElement.textContent = "Haber Bulunamadı";
+                newsDateElement.innerHTML = "";
+                newsAuthorElement.innerHTML = "";
+                newsImageElement.src = "https://i.imgur.com/news_not_found.jpg"; // Varsayılan hata görseli
+                newsContentArea.innerHTML = `
+                    <p>Aradığınız haber bulunamadı veya geçersiz bir bağlantı kullandınız. Lütfen <a href="index.html#news">ana haber sayfasına</a> geri dönün.</p>
+                `;
+            }
+
+            // Navigasyon linkindeki "Haberler" linkini aktif yap
+            const navNewsLink = document.querySelector('.nav-links a[href="index.html#news"]');
+            if (navNewsLink) {
+                navNewsLink.classList.add('active');
+            }
+        });
+    </script>
+</body>
+</html>
