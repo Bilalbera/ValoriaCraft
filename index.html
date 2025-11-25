@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VALORİA CRAFT | BoxPvP Sunucusu</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
         /* Global Ayarlar */
         :root {
@@ -14,6 +15,7 @@
             --text-color: #e0e0e0;
             --border-color: #444;
             --shadow-color: rgba(0, 0, 0, 0.4);
+            --button-hover-bg: #e6b100;
         }
 
         body {
@@ -110,8 +112,12 @@
             transition: width 0.3s ease;
         }
 
-        .nav-links a:hover::after {
+        .nav-links a:hover::after,
+        .nav-links a.active::after { /* Aktif link için */
             width: 100%;
+        }
+        .nav-links a.active { /* Aktif link rengi */
+            color: var(--accent-color);
         }
 
         /* Banner/Hero Bölümü */
@@ -375,6 +381,96 @@
             font-size: 0.95em;
         }
 
+        /* Haberler Bölümü Stili */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Daha geniş haber kartları */
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .news-card {
+            background-color: var(--secondary-bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            box-shadow: 0 8px 16px var(--shadow-color);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .news-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background-color: var(--accent-color);
+            transform: translateY(-100%);
+            transition: transform 0.3s ease-out;
+        }
+
+        .news-card:hover::before {
+            transform: translateY(0);
+        }
+
+        .news-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px var(--shadow-color);
+        }
+
+        .news-image {
+            width: 100%;
+            height: 220px; /* Haber görseli için sabit yükseklik */
+            object-fit: cover;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .news-content {
+            padding: 25px;
+        }
+
+        .news-content h3 {
+            color: #fff;
+            font-size: 1.8em;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .news-content p {
+            font-size: 0.95em;
+            color: var(--text-color);
+            margin-bottom: 15px;
+        }
+
+        .news-meta {
+            font-size: 0.85em;
+            color: #888;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .read-more-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--main-bg-color);
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.95em;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            margin-top: 15px;
+        }
+
+        .read-more-button:hover {
+            background-color: var(--button-hover-bg);
+            transform: translateY(-3px);
+        }
+
+
         /* Sosyal Medya */
         .social-links {
             text-align: center;
@@ -430,7 +526,7 @@
             .section-title {
                 font-size: 2.5em;
             }
-            .card-grid, .team-grid {
+            .card-grid, .team-grid, .news-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -439,14 +535,15 @@
 <body>
     <header>
         <div class="navbar container">
-            <div class="logo">VALORİA<span>CRAFT</span></div>
+            <a href="#home" class="logo">VALORİA<span>CRAFT</span></a>
             <nav>
                 <ul class="nav-links">
-                    <li><a href="#home">Ana Sayfa</a></li>
+                    <li><a href="#home" class="active">Ana Sayfa</a></li>
                     <li><a href="#features">Özellikler</a></li>
-                    <li><a href="#rules">Kurallar</a></li>
+                    <li><a href="#news">Haberler</a></li> <li><a href="#rules">Kurallar</a></li>
                     <li><a href="#team">Ekip</a></li>
-                    <li><a href="store.html">Mağaza</a></li> </ul>
+                    <li><a href="store.html">Mağaza</a></li>
+                </ul>
             </nav>
         </div>
     </header>
@@ -490,6 +587,52 @@
             </div>
         </section>
 
+        <section id="news">
+            <div class="container">
+                <h2 class="section-title">Son Haberler</h2>
+                <div class="news-grid">
+                    <div class="news-card">
+                        <img src="https://i.imgur.com/news_update_1.jpg" alt="Yeni Sezon Başladı" class="news-image">
+                        <div class="news-content">
+                            <h3>Yeni BoxPvP Sezonu Başladı!</h3>
+                            <p>Büyük yeniliklerle dolu yeni BoxPvP sezonumuz yayında! Yeni harita, özel eşyalar ve daha fazlası sizi bekliyor.</p>
+                            <div class="news-meta">
+                                <span><i class="fas fa-calendar-alt"></i> 10 Ekim 2023</span>
+                                <span><i class="fas fa-user"></i> AdminName</span>
+                            </div>
+                            <a href="#" class="read-more-button">Devamını Oku</a>
+                        </div>
+                    </div>
+
+                    <div class="news-card">
+                        <img src="https://i.imgur.com/news_event_2.jpg" alt="Cadılar Bayramı Etkinliği" class="news-image">
+                        <div class="news-content">
+                            <h3>Cadılar Bayramı Özel Etkinliği!</h3>
+                            <p>Korkunç indirimler ve sürpriz ödüllerle dolu Cadılar Bayramı etkinliğimiz başladı. Bu fırsatı kaçırmayın!</p>
+                            <div class="news-meta">
+                                <span><i class="fas fa-calendar-alt"></i> 25 Ekim 2023</span>
+                                <span><i class="fas fa-user"></i> ModName</span>
+                            </div>
+                            <a href="#" class="read-more-button">Devamını Oku</a>
+                        </div>
+                    </div>
+
+                    <div class="news-card">
+                        <img src="https://i.imgur.com/news_patch_3.jpg" alt="Güncelleme Notları" class="news-image">
+                        <div class="news-content">
+                            <h3>Sunucu Bakım ve Yama Notları</h3>
+                            <p>Performans iyileştirmeleri ve küçük hata düzeltmeleri içeren son yama notlarımıza göz atın.</p>
+                            <div class="news-meta">
+                                <span><i class="fas fa-calendar-alt"></i> 05 Kasım 2023</span>
+                                <span><i class="fas fa-user"></i> AdminName</span>
+                            </div>
+                            <a href="#" class="read-more-button">Devamını Oku</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="rules">
             <div class="container">
                 <h2 class="section-title">Sunucu Kuralları</h2>
@@ -497,7 +640,7 @@
                     <li>Küfür, hakaret ve argo kelimeler kullanmak kesinlikle yasaktır.</li>
                     <li>Hile (hacks, cheats) ve yasa dışı istemciler kullanmak ban sebebidir.</li>
                     <li>Başka sunucuların reklamını yapmak yasaktır.</li>
-                    <li>Oyun içi hataları (bug) veya açıkları kötüye kullanmak yasaktır.</li>
+                    <li>Oyun içi hataları (bug) veya açıkları kötüye kullanmak yasamak.</li>
                     <li>Spam yapmak veya flood atmak yasaktır.</li>
                     <li>Herkes birbirine saygılı davranmalıdır.</li>
                     <li>VALORİA CRAFT yönetimi, kuralları değiştirme hakkını saklı tutar.</li>
@@ -532,7 +675,6 @@
                     <a href="https://discord.gg/yourdiscordlink" target="_blank" title="Discord"><i class="fab fa-discord"></i></a>
                     <a href="https://youtube.com/yourchannel" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
                     <a href="https://twitter.com/yourtwitter" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
-                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
                 </div>
             </div>
         </section>
@@ -540,7 +682,8 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 Valoria Craft. Tüm Hakları Saklıdır.</p>
+            <p>&copy; 2023 VALORİA CRAFT. Tüm Hakları Saklıdır.</p>
+            <p>Made with ❤️ for the community.</p>
         </div>
     </footer>
 
@@ -548,47 +691,67 @@
         document.addEventListener('DOMContentLoaded', function() {
             // IP Adresi Kopyalama Fonksiyonu
             const ipDisplay = document.getElementById('ip-display');
-            ipDisplay.addEventListener('click', function() {
-                const ipText = ipDisplay.textContent;
-                navigator.clipboard.writeText(ipText).then(function() {
-                    alert('IP Adresi kopyalandı: ' + ipText);
-                }, function(err) {
-                    console.error('IP Adresi kopyalanamadı: ', err);
+            if (ipDisplay) { // IP Display elementinin varlığını kontrol et
+                ipDisplay.addEventListener('click', function() {
+                    const ipText = ipDisplay.textContent;
+                    navigator.clipboard.writeText(ipText).then(function() {
+                        alert('IP Adresi kopyalandı: ' + ipText);
+                    }, function(err) {
+                        console.error('IP Adresi kopyalanamadı: ', err);
+                    });
                 });
-            });
-
-            // Gerçek zamanlı sunucu durumu (Placeholder - API entegrasyonu için)
-            // Bu kısım genellikle bir sunucu API'sinden veri çeker.
-            // Örnek bir simülasyon:
-            function updateServerStatus() {
-                const playerCountElement = document.getElementById('player-count');
-                // Gerçek bir senaryoda burası fetch API ile bir sunucuya istek atardı:
-                // fetch('YOUR_SERVER_STATUS_API_ENDPOINT')
-                // .then(response => response.json())
-                // .then(data => {
-                //     playerCountElement.textContent = data.players.online;
-                // })
-                // .catch(error => console.error('Sunucu durumu alınamadı:', error));
-
-                // Şimdilik rastgele bir sayı atayalım (örnek amaçlı)
-                const randomPlayers = Math.floor(Math.random() * 250) + 50; // 50-300 arası
-                playerCountElement.textContent = randomPlayers;
             }
 
-            // Sayfa yüklendiğinde ve her 30 saniyede bir güncelle
-            updateServerStatus();
-            setInterval(updateServerStatus, 30000); // 30 saniyede bir güncelle
+            // Gerçek zamanlı sunucu durumu (Placeholder - API entegrasyonu için)
+            function updateServerStatus() {
+                const playerCountElement = document.getElementById('player-count');
+                if (playerCountElement) { // Player Count elementinin varlığını kontrol et
+                    const randomPlayers = Math.floor(Math.random() * 250) + 50; // 50-300 arası
+                    playerCountElement.textContent = randomPlayers;
+                }
+            }
+
+            // Sayfa yüklendiğinde ve her 30 saniyede bir güncelle (sadece element varsa)
+            if (document.getElementById('player-count')) {
+                updateServerStatus();
+                setInterval(updateServerStatus, 30000); // 30 saniyede bir güncelle
+            }
 
             // Smooth Scroll (Yumuşak Kaydırma)
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     e.preventDefault();
 
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                    // Navigasyon linklerini kontrol et ve aktif sınıfını yönet
+                    document.querySelectorAll('.nav-links a').forEach(link => {
+                        link.classList.remove('active');
                     });
+                    this.classList.add('active');
                 });
             });
+
+            // Sayfa yüklendiğinde mevcut URL'ye göre aktif navigasyon linkini işaretle
+            // Bu kısım tek sayfa uygulamalarda #hash'ler için gereklidir.
+            const handleHashChange = () => {
+                const hash = window.location.hash || '#home';
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === hash) {
+                        link.classList.add('active');
+                    }
+                });
+            };
+
+            window.addEventListener('hashchange', handleHashChange);
+            handleHashChange(); // Sayfa yüklendiğinde de çalıştır
         });
     </script>
 </body>
