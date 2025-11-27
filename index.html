@@ -813,3 +813,222 @@
 
         <section id="leaderboards">
             <div class="container">
+                <h2 class="section-title">Liderlik Tabloları</h2>
+
+                <div class="tabs">
+                    <button class="tab-button active" onclick="openLeaderboard(event, 'kills')">En Çok Kill</button>
+                    <button class="tab-button" onclick="openLeaderboard(event, 'deaths')">En Çok Ölme</button>
+                    <button class="tab-button" onclick="openLeaderboard(event, 'money')">En Zengin</button>
+                </div>
+
+                <div id="kills" class="tab-content active">
+                    <table class="leaderboard-table">
+                        <thead>
+                            <tr>
+                                <th>Sıra</th>
+                                <th>Oyuncu</th>
+                                <th>Kill Sayısı</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1</td><td>PlayerName_1</td><td>1250</td></tr>
+                            <tr><td>2</td><td>PlayerName_2</td><td>1120</td></tr>
+                            <tr><td>3</td><td>PlayerName_3</td><td>980</td></tr>
+                            <tr><td>4</td><td>PlayerName_4</td><td>850</td></tr>
+                            <tr><td>5</td><td>PlayerName_5</td><td>720</td></tr>
+                            <tr><td>6</td><td>PlayerName_6</td><td>610</td></tr>
+                            <tr><td>7</td><td>PlayerName_7</td><td>580</td></tr>
+                            <tr><td>8</td><td>PlayerName_8</td><td>490</td></tr>
+                            <tr><td>9</td><td>PlayerName_9</td><td>360</td></tr>
+                            <tr><td>10</td><td>PlayerName_10</td><td>250</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div id="deaths" class="tab-content">
+                    <table class="leaderboard-table">
+                        <thead>
+                            <tr>
+                                <th>Sıra</th>
+                                <th>Oyuncu</th>
+                                <th>Ölme Sayısı</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1</td><td>PlayerName_1</td><td>800</td></tr>
+                            <tr><td>2</td><td>PlayerName_2</td><td>750</td></tr>
+                            <tr><td>3</td><td>PlayerName_3</td><td>690</td></tr>
+                            <tr><td>4</td><td>PlayerName_4</td><td>620</td></tr>
+                            <tr><td>5</td><td>PlayerName_5</td><td>550</td></tr>
+                            <tr><td>6</td><td>PlayerName_6</td><td>480</td></tr>
+                            <tr><td>7</td><td>PlayerName_7</td><td>410</td></tr>
+                            <tr><td>8</td><td>PlayerName_8</td><td>350</td></tr>
+                            <tr><td>9</td><td>PlayerName_9</td><td>290</td></tr>
+                            <tr><td>10</td><td>PlayerName_10</td><td>230</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div id="money" class="tab-content">
+                    <table class="leaderboard-table">
+                        <thead>
+                            <tr>
+                                <th>Sıra</th>
+                                <th>Oyuncu</th>
+                                <th>Bakiye</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1</td><td>PlayerName_1</td><td>$150,000</td></tr>
+                            <tr><td>2</td><td>PlayerName_2</td><td>$130,000</td></tr>
+                            <tr><td>3</td><td>PlayerName_3</td><td>$110,000</td></tr>
+                            <tr><td>4</td><td>PlayerName_4</td><td>$95,000</td></tr>
+                            <tr><td>5</td><td>PlayerName_5</td><td>$80,000</td></tr>
+                            <tr><td>6</td><td>PlayerName_6</td><td>$65,000</td></tr>
+                            <tr><td>7</td><td>PlayerName_7</td><td>$50,000</td></tr>
+                            <tr><td>8</td><td>PlayerName_8</td><td>$40,000</td></tr>
+                            <tr><td>9</td><td>PlayerName_9</td><td>$30,000</td></tr>
+                            <tr><td>10</td><td>PlayerName_10</td><td>$20,000</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section id="rules">
+            <div class="container">
+                <h2 class="section-title">Sunucu Kuralları</h2>
+                <ul class="rules-list">
+                    <li>Küfür ve argo kelimeler kullanmak yasaktır. Herkesin saygılı bir ortamda oynamaya hakkı vardır.</li>
+                    <li>Hile (client, bug abuse vb.) kullanmak kalıcı ban sebebidir. Adil oyun ortamını bozmayın.</li>
+                    <li>Spam yapmak veya flood atmak yasaktır. Sohbeti gereksiz yere meşgul etmeyin.</li>
+                    <li>Reklam yapmak (başka sunucu, site vb.) yasaktır. Bu tür içerikler doğrudan ban ile sonuçlanır.</li>
+                    <li>Her türlü taciz ve nefret söylemi yasaktır. Sunucumuzda ırkçılık, cinsiyetçilik veya herhangi bir ayrımcılığa izin verilmez.</li>
+                    <li>Minecraft dışındaki kişisel bilgileri paylaşmak veya istemek yasaktır. Gizliliğinizi koruyun.</li>
+                    <li>Yetkililere karşı saygılı olun. Onların görevleri düzeni sağlamaktır.</li>
+                    <li>Siyasi veya dini tartışmalar başlatmak yasaktır. Bu tür konular sunucumuzun amacı dışındadır.</li>
+                    <li>Hesap paylaşımı veya satışı yasaktır. Hesabınızın güvenliğinden siz sorumlusunuz.</li>
+                    <li>Oyun içi ekonomi manipülasyonu veya bugları kötüye kullanmak yasaktır. Adil ticareti teşvik edin.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="team">
+            <div class="container">
+                <h2 class="section-title">Ekibimiz</h2>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <img src="https://i.imgur.com/admin_skin_placeholder.png" alt="Admin Resmi">
+                        <h4>AdminNick1</h4>
+                        <p>Kurucu & Geliştirici</p>
+                    </div>
+                    <div class="team-member">
+                        <img src="https://i.imgur.com/admin_skin_placeholder.png" alt="Admin Resmi">
+                        <h4>AdminNick2</h4>
+                        <p>Yönetici</p>
+                    </div>
+                    <div class="team-member">
+                        <img src="https://i.imgur.com/mod_skin_placeholder.png" alt="Moderatör Resmi">
+                        <h4>ModNick1</h4>
+                        <p>Moderatör</p>
+                    </div>
+                    <div class="team-member">
+                        <img src="https://i.imgur.com/mod_skin_placeholder.png" alt="Moderatör Resmi">
+                        <h4>ModNick2</h4>
+                        <p>Moderatör</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://discord.gg/yourdiscordlink" target="_blank" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                <a href="https://twitter.com/yourtwitterlink" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://instagram.com/yourinstagramlink" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p>&copy; 2023 VALORİA CRAFT. Tüm hakları saklıdır.</p>
+            <p>Destek ve İletişim: support@valoriacraft.com</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll active class
+        document.addEventListener("DOMContentLoaded", function() {
+            const navLinks = document.querySelectorAll('.nav-links a');
+            const sections = document.querySelectorAll('section');
+
+            function changeLinkState() {
+                let index = sections.length;
+
+                while(--index && window.scrollY + 97 < sections[index].offsetTop) {} // 97px header height
+
+                navLinks.forEach((link) => link.classList.remove('active'));
+                if (navLinks[index]) {
+                    navLinks[index].classList.add('active');
+                }
+            }
+
+            changeLinkState();
+            window.addEventListener('scroll', changeLinkState);
+
+            // Smooth scrolling
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    window.scrollTo({
+                        top: targetSection.offsetTop - 96, // Adjust for fixed header
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // IP Address copy to clipboard
+            const ipDisplay = document.getElementById('ip-display');
+            if (ipDisplay) {
+                ipDisplay.addEventListener('click', function() {
+                    const ip = this.textContent;
+                    navigator.clipboard.writeText(ip).then(() => {
+                        const originalText = this.textContent;
+                        this.textContent = 'Kopyalandı!';
+                        setTimeout(() => {
+                            this.textContent = originalText;
+                        }, 1500);
+                    }).catch(err => {
+                        console.error('IP kopyalanırken hata oluştu:', err);
+                    });
+                });
+            }
+
+            // Server status (placeholder, you'd integrate with a real API)
+            const playerCountElement = document.getElementById('player-count');
+            if (playerCountElement) {
+                // Simulate player count for now
+                playerCountElement.textContent = Math.floor(Math.random() * 200) + 50; 
+            }
+        });
+
+        // Leaderboard tabs functionality
+        function openLeaderboard(evt, leaderboardName) {
+            var i, tabcontent, tabbuttons;
+
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+
+            tabbuttons = document.getElementsByClassName("tab-button");
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
+            }
+
+            document.getElementById(leaderboardName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+</body>
+</html>
