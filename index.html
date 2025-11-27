@@ -483,6 +483,7 @@
             border-radius: 10px;
             border: 1px solid var(--border-color);
             padding: 5px;
+            flex-wrap: wrap; /* Küçük ekranlarda sarmalama */
         }
 
         .tab-button {
@@ -495,7 +496,9 @@
             cursor: pointer;
             transition: background-color 0.3s ease, color 0.3s ease;
             border-radius: 8px;
-            margin: 0 5px;
+            margin: 5px; /* Butonlar arasında biraz boşluk */
+            flex-grow: 1; /* Butonların eşit genişlikte olması için */
+            max-width: 300px; /* Çok genişlemelerini engellemek için */
         }
 
         .tab-button.active {
@@ -546,7 +549,7 @@
         .leaderboard-table td:first-child {
             font-weight: bold;
             text-align: center;
-            width: 50px;
+            width: 50px; /* Sıra numarası için sabit genişlik */
         }
         
         /* İlk 3 sıra için özel stil */
@@ -623,31 +626,45 @@
                 border: none;
                 border-bottom: 1px solid var(--border-color);
                 position: relative;
-                padding-left: 50%;
+                padding-left: 50%; /* İçeriği sağa itmek için */
                 text-align: right;
             }
             .leaderboard-table td:before { 
                 position: absolute;
                 top: 0;
                 left: 6px;
-                width: 45%; 
+                width: 45%; /* Etiket genişliği */
                 padding-right: 10px; 
                 white-space: nowrap;
                 text-align: left;
                 font-weight: bold;
                 color: var(--accent-color);
             }
-            .leaderboard-table td:nth-of-type(1):before { content: "Sıra:"; }
-            .leaderboard-table td:nth-of-type(2):before { content: "Oyuncu:"; }
-            .leaderboard-table td:nth-of-type(3):before { content: "Değer:"; }
+            /* Mobil görünümde her sütun için başlık */
+            .leaderboard-table#kills td:nth-of-type(1):before { content: "Sıra:"; }
+            .leaderboard-table#kills td:nth-of-type(2):before { content: "Oyuncu:"; }
+            .leaderboard-table#kills td:nth-of-type(3):before { content: "Kill Sayısı:"; }
+
+            .leaderboard-table#deaths td:nth-of-type(1):before { content: "Sıra:"; }
+            .leaderboard-table#deaths td:nth-of-type(2):before { content: "Oyuncu:"; }
+            .leaderboard-table#deaths td:nth-of-type(3):before { content: "Ölme Sayısı:"; }
+
+            .leaderboard-table#money td:nth-of-type(1):before { content: "Sıra:"; }
+            .leaderboard-table#money td:nth-of-type(2):before { content: "Oyuncu:"; }
+            .leaderboard-table#money td:nth-of-type(3):before { content: "Bakiye:"; }
             
+            /* Mobil görünümde ilk 3'ün arka plan ve renklerini normalleştir */
             .leaderboard-table tr:nth-child(1), .leaderboard-table tr:nth-child(2), .leaderboard-table tr:nth-child(3) {
-                background: none; /* Mobil görünümde ilk 3'ün arka planını kaldırma */
-                color: var(--text-color);
+                background-color: var(--main-bg-color); /* Normal arka plan */
+                color: var(--text-color); /* Normal metin rengi */
             }
-            .leaderboard-table td {
-                color: var(--text-color);
+            .leaderboard-table tr:nth-child(odd) { /* Tek satırlar için mobil arka plan */
+                background-color: var(--main-bg-color);
             }
+            .leaderboard-table tr:nth-child(even) { /* Çift satırlar için mobil arka plan */
+                background-color: #1f1f1f;
+            }
+            /* Mobil görünümde ilk 3'ün etiket renklerini geri getirme */
             .leaderboard-table tr:nth-child(1) td:before { color: #4CAF50; }
             .leaderboard-table tr:nth-child(2) td:before { color: #FF9800; }
             .leaderboard-table tr:nth-child(3) td:before { color: #795548; }
@@ -700,7 +717,8 @@
                     <li><a href="#home" class="active">Ana Sayfa</a></li>
                     <li><a href="#features">Özellikler</a></li>
                     <li><a href="#news">Haberler</a></li>
-                    <li><a href="#leaderboards">Liderlik Tabloları</a></li> <li><a href="#rules">Kurallar</a></li>
+                    <li><a href="#leaderboards">Liderlik Tabloları</a></li>
+                    <li><a href="#rules">Kurallar</a></li>
                     <li><a href="#team">Ekip</a></li>
                     <li><a href="store.html">Mağaza</a></li>
                 </ul>
@@ -795,208 +813,4 @@
 
         <section id="leaderboards">
             <div class="container">
-                <h2 class="section-title">Liderlik Tabloları</h2>
-
-                <div class="tabs">
-                    <button class="tab-button active" onclick="openLeaderboard(event, 'kills')">En Çok Kill</button>
-                    <button class="tab-button" onclick="openLeaderboard(event, 'deaths')">En Çok Ölme</button>
-                    <button class="tab-button" onclick="openLeaderboard(event, 'money')">En Çok Para</button>
-                </div>
-
-                <div id="kills" class="tab-content active">
-                    <table class="leaderboard-table">
-                        <thead>
-                            <tr>
-                                <th>Sıra</th>
-                                <th>Oyuncu</th>
-                                <th>Kill Sayısı</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>#1</td><td>PlayerName_1</td><td>2450</td></tr>
-                            <tr><td>#2</td><td>PlayerName_2</td><td>2120</td></tr>
-                            <tr><td>#3</td><td>PlayerName_3</td><td>1890</td></tr>
-                            <tr><td>#4</td><td>PlayerName_4</td><td>1550</td></tr>
-                            <tr><td>#5</td><td>PlayerName_5</td><td>1480</td></tr>
-                            <tr><td>#6</td><td>PlayerName_6</td><td>1200</td></tr>
-                            <tr><td>#7</td><td>PlayerName_7</td><td>950</td></tr>
-                            <tr><td>#8</td><td>PlayerName_8</td><td>750</td></tr>
-                            <tr><td>#9</td><td>PlayerName_9</td><td>610</td></tr>
-                            <tr><td>#10</td><td>PlayerName_10</td><td>550</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div id="deaths" class="tab-content">
-                    <table class="leaderboard-table">
-                        <thead>
-                            <tr>
-                                <th>Sıra</th>
-                                <th>Oyuncu</th>
-                                <th>Ölme Sayısı</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>#1</td><td>PlayerName_A</td><td>1250</td></tr>
-                            <tr><td>#2</td><td>PlayerName_B</td><td>980</td></tr>
-                            <tr><td>#3</td><td>PlayerName_C</td><td>850</td></tr>
-                            <tr><td>#4</td><td>PlayerName_D</td><td>700</td></tr>
-                            <tr><td>#5</td><td>PlayerName_E</td><td>650</td></tr>
-                            <tr><td>#6</td><td>PlayerName_F</td><td>590</td></tr>
-                            <tr><td>#7</td><td>PlayerName_G</td><td>510</td></tr>
-                            <tr><td>#8</td><td>PlayerName_H</td><td>450</td></tr>
-                            <tr><td>#9</td><td>PlayerName_I</td><td>390</td></tr>
-                            <tr><td>#10</td><td>PlayerName_J</td><td>320</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div id="money" class="tab-content">
-                    <table class="leaderboard-table">
-                        <thead>
-                            <tr>
-                                <th>Sıra</th>
-                                <th>Oyuncu</th>
-                                <th>Bakiye (G$)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>#1</td><td>PlayerName_X</td><td>12.500.000</td></tr>
-                            <tr><td>#2</td><td>PlayerName_Y</td><td>9.800.000</td></tr>
-                            <tr><td>#3</td><td>PlayerName_Z</td><td>7.500.000</td></tr>
-                            <tr><td>#4</td><td>PlayerName_K</td><td>6.200.000</td></tr>
-                            <tr><td>#5</td><td>PlayerName_L</td><td>5.100.000</td></tr>
-                            <tr><td>#6</td><td>PlayerName_M</td><td>4.800.000</td></tr>
-                            <tr><td>#7</td><td>PlayerName_N</td><td>3.900.000</td></tr>
-                            <tr><td>#8</td><td>PlayerName_P</td><td>3.100.000</td></tr>
-                            <tr><td>#9</td><td>PlayerName_R</td><td>2.500.000</td></tr>
-                            <tr><td>#10</td><td>PlayerName_S</td><td>1.900.000</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-
-            </div>
-        </section>
-        <section id="rules">
-            <div class="container">
-                <h2 class="section-title">Sunucu Kuralları</h2>
-                <ul class="rules-list">
-                    <li>Küfür, hakaret ve argo kelimeler kullanmak kesinlikle yasaktır.</li>
-                    <li>Hile (hacks, cheats) ve yasa dışı istemciler kullanmak ban sebebidir.</li>
-                    <li>Başka sunucuların reklamını yapmak yasaktır.</li>
-                    <li>Oyun içi hataları (bug) veya açıkları kötüye kullanmak yasamak.</li>
-                    <li>Spam yapmak veya flood atmak yasaktır.</li>
-                    <li>Herkes birbirine saygılı davranmalıdır.</li>
-                    <li>VALORİA CRAFT yönetimi, kuralları değiştirme hakkını saklı tutar.</li>
-                </ul>
-            </div>
-        </section>
-
-        <section id="team">
-            <div class="container">
-                <h2 class="section-title">Ekibimiz</h2>
-                <div class="team-grid">
-                    <div class="team-member">
-                        <img src="https://crafatar.com/avatars/MHF_Steve" alt="Admin Steve"> <h4>AdminName</h4>
-                        <p>Kurucu & Geliştirici</p>
-                    </div>
-                    <div class="team-member">
-                        <img src="https://crafatar.com/avatars/MHF_Alex" alt="Mod Alex"> <h4>ModName</h4>
-                        <p>Moderasyon Lideri</p>
-                    </div>
-                    <div class="team-member">
-                        <img src="https://crafatar.com/avatars/MHF_Herobrine" alt="Destek Hero"> <h4>SupportName</h4>
-                        <p>Destek Ekibi</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <div class="social-links container">
-            <a href="https://discord.gg/yourdiscordlink" target="_blank" title="Discord Sunucumuz"><i class="fab fa-discord"></i></a>
-            <a href="https://instagram.com/yourinstagram" target="_blank" title="Instagram Sayfamız"><i class="fab fa-instagram"></i></a>
-            <a href="https://twitter.com/yourtwitter" target="_blank" title="Twitter Hesabımız"><i class="fab fa-twitter"></i></a>
-            <a href="https://youtube.com/youryoutube" target="_blank" title="YouTube Kanalımız"><i class="fab fa-youtube"></i></a>
-        </div>
-        
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2023 VALORİA CRAFT. Tüm Hakları Saklıdır.</p>
-            <p>Tasarım & Kodlama: VALORİA CRAFT Ekibi.</p>
-        </div>
-    </footer>
-
-    <script>
-        // Liderlik Tablosu Sekme Fonksiyonu
-        function openLeaderboard(evt, leaderboardName) {
-            var i, tabcontent, tablinks;
-            
-            // Tüm içerikleri gizle
-            tabcontent = document.getElementsByClassName("tab-content");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-                tabcontent[i].classList.remove("active");
-            }
-            
-            // Tüm butonlardaki aktif sınıfını kaldır
-            tablinks = document.getElementsByClassName("tab-button");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].classList.remove("active");
-            }
-            
-            // Seçili içeriği göster ve butonu aktif yap
-            document.getElementById(leaderboardName).style.display = "block";
-            document.getElementById(leaderboardName).classList.add("active");
-            evt.currentTarget.classList.add("active");
-        }
-
-        // IP Kopyalama Fonksiyonu
-        document.getElementById('ip-display').onclick = function() {
-            var ip = this.textContent;
-            navigator.clipboard.writeText(ip).then(function() {
-                alert("IP Adresi: " + ip + " başarıyla kopyalandı!");
-            }, function(err) {
-                console.error('Kopyalama başarısız oldu: ', err);
-                alert("IP kopyalanamadı, lütfen manuel kopyalayın: " + ip);
-            });
-        };
-
-        // Navigasyon Aktif Link Fonksiyonu
-        document.addEventListener('DOMContentLoaded', function() {
-            const navLinks = document.querySelectorAll('.nav-links a');
-            const sections = document.querySelectorAll('section');
-
-            const options = {
-                threshold: 0.5 
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const currentId = entry.target.id;
-                        navLinks.forEach(link => {
-                            link.classList.remove('active');
-                            if (link.getAttribute('href') === `#${currentId}`) {
-                                link.classList.add('active');
-                            }
-                        });
-                    }
-                });
-            }, options);
-
-            sections.forEach(section => {
-                observer.observe(section);
-            });
-            
-            // Sayfa yüklendiğinde Kill tablosunu varsayılan olarak göster
-            document.getElementById('kills').style.display = 'block';
-            document.getElementById('kills').classList.add("active");
-        });
-
-        // Oyuncu Sayısı Dinamik Veri Örneği (Gerçekte bir API'den gelmeli)
-        document.getElementById('player-count').textContent = Math.floor(Math.random() * 200) + 50; // 50 ile 250 arasında rastgele bir sayı
-    </script>
-</body>
-</html>
+                <h2 class="section-title">Liderlik Tabloları
