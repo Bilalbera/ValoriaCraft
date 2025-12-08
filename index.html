@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VALORİA CRAFT | BoxPvP Sunucusu</title>
+    <title>VALORİA CRAFT | Minecraft Sunucusu</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
-        /* Global Ayarlar */
+        /* Global & Renk Ayarları (LeaderOS Tarzı Koyu Tema) */
         :root {
-            --main-bg-color: #1a1a1a;
-            --secondary-bg-color: #2c2c2c;
-            --accent-color: #FFC107; /* VALORİA CRAFT turuncumsu sarısı */
+            --main-bg-color: #121212; /* Koyu arka plan */
+            --secondary-bg-color: #1e1e1e; /* Kart arka planı */
+            --accent-color: #FFC107; /* Turuncu/Sarı vurgu rengi */
             --text-color: #e0e0e0;
-            --border-color: #444;
-            --shadow-color: rgba(0, 0, 0, 0.4);
+            --border-color: #333;
+            --shadow-color: rgba(0, 0, 0, 0.6);
             --button-hover-bg: #e6b100;
         }
 
@@ -25,11 +25,10 @@
             background-color: var(--main-bg-color);
             color: var(--text-color);
             line-height: 1.6;
-            overflow-x: hidden; /* Yatay kaydırmayı engelle */
         }
 
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Orbitron', sans-serif; /* Daha keskin ve modern font */
+        h1, h2, h3, h4 {
+            font-family: 'Orbitron', sans-serif;
             color: var(--accent-color);
             margin-bottom: 15px;
         }
@@ -56,7 +55,7 @@
             background-color: var(--secondary-bg-color);
             padding: 15px 0;
             border-bottom: 2px solid var(--border-color);
-            box-shadow: 0 4px 8px var(--shadow-color);
+            box-shadow: 0 4px 10px var(--shadow-color);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -74,8 +73,7 @@
             font-size: 2.2em;
             font-weight: 700;
             color: var(--accent-color);
-            text-shadow: 0 0 10px rgba(255, 193, 7, 0.5);
-            letter-spacing: 2px;
+            text-shadow: 0 0 8px rgba(255, 193, 7, 0.5);
         }
 
         .logo span {
@@ -92,614 +90,190 @@
         .nav-links li {
             margin-left: 30px;
         }
-
+        
         .nav-links a {
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.1em;
+            font-size: 1em;
             color: var(--text-color);
-            padding: 5px 0;
             position: relative;
         }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--accent-color);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after,
-        .nav-links a.active::after { /* Aktif link için */
-            width: 100%;
-        }
-        .nav-links a.active { /* Aktif link rengi */
-            color: var(--accent-color);
-        }
-
-        /* Banner/Hero Bölümü */
+        
+        /* Hero/Banner Bölümü */
         .hero {
-            position: relative;
-            height: 600px; /* Daha yüksek bir hero alanı */
+            height: 500px;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://i.imgur.com/your-server-background-image.jpg') no-repeat center center/cover; 
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
-            color: #fff;
-            overflow: hidden;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://i.imgur.com/your-boxpvp-background-image.jpg') no-repeat center center/cover; /* BoxPvP temalı arka plan */
             border-bottom: 3px solid var(--accent-color);
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5); /* Hafif karartma */
-            z-index: 1;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
-
         .hero h1 {
-            font-size: 4.5em; /* Daha büyük başlık */
-            margin-bottom: 10px;
-            text-shadow: 0 0 20px var(--accent-color), 0 0 10px #000;
-            color: var(--accent-color); /* Logoyla aynı renk */
-            line-height: 1;
+            font-size: 4em;
+            margin-bottom: 5px;
+            color: #fff;
+            text-shadow: 0 0 15px var(--accent-color);
         }
 
         .hero p {
-            font-size: 1.5em;
+            font-size: 1.3em;
             margin-bottom: 30px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
         }
 
-        .hero .ip-address {
+        .ip-box {
             background-color: var(--secondary-bg-color);
             padding: 15px 30px;
             border-radius: 8px;
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.8em;
+            font-size: 1.5em;
             font-weight: bold;
             display: inline-block;
             border: 2px solid var(--accent-color);
-            box-shadow: 0 0 15px var(--accent-color), 0 0 5px rgba(0,0,0,0.5);
+            box-shadow: 0 0 10px var(--accent-color);
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
 
-        .hero .ip-address:hover {
+        .ip-box:hover {
             background-color: var(--accent-color);
             color: var(--main-bg-color);
-            transform: translateY(-5px);
+            transform: scale(1.05);
         }
 
-        /* Bölüm Stili */
-        section {
-            padding: 60px 0;
+        /* Oyun Modları Bölümü */
+        #gamemodes {
+            padding: 80px 0;
             background-color: var(--main-bg-color);
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        section:nth-of-type(even) {
-            background-color: var(--secondary-bg-color);
         }
 
         .section-title {
             text-align: center;
             font-size: 3em;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
             position: relative;
         }
-
+        
         .section-title::after {
             content: '';
             position: absolute;
             bottom: -15px;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
+            width: 100px;
+            height: 3px;
             background-color: var(--accent-color);
             border-radius: 2px;
         }
 
-        /* Kart Stilleri */
-        .card-grid {
+        .mode-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
-            margin-top: 40px;
         }
 
-        .card {
+        .mode-card {
             background-color: var(--secondary-bg-color);
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 8px 16px var(--shadow-color);
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background-color: var(--accent-color);
-            transform: translateY(-100%);
-            transition: transform 0.3s ease-out;
-        }
-
-        .card:hover::before {
-            transform: translateY(0);
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 12px 24px var(--shadow-color);
-        }
-
-        .card h3 {
-            color: var(--accent-color);
-            font-size: 1.8em;
-            margin-bottom: 15px;
-            font-family: 'Orbitron', sans-serif;
-        }
-
-        .card p {
-            color: var(--text-color);
-        }
-
-        /* Sunucu Durumu */
-        .server-status-box {
-            background-color: var(--secondary-bg-color);
-            border: 2px solid var(--accent-color);
-            border-radius: 10px;
-            padding: 25px;
-            text-align: center;
-            box-shadow: 0 0 20px var(--accent-color), 0 0 10px rgba(0,0,0,0.5);
-            max-width: 400px;
-            margin: 50px auto 0 auto;
-        }
-
-        .server-status-box h3 {
-            margin-top: 0;
-            color: var(--accent-color);
-            font-size: 2em;
-        }
-
-        .status-indicator {
-            display: inline-block;
-            width: 15px;
-            height: 15px;
-            border-radius: 50%;
-            margin-right: 10px;
-            vertical-align: middle;
-        }
-
-        .status-online {
-            background-color: #4CAF50; /* Yeşil */
-            box-shadow: 0 0 8px #4CAF50;
-        }
-
-        .status-offline {
-            background-color: #F44336; /* Kırmızı */
-            box-shadow: 0 0 8px #F44336;
-        }
-
-        .player-count {
-            font-size: 1.8em;
-            font-weight: bold;
-            color: #fff;
-            margin-top: 15px;
-        }
-
-        /* Kurallar Listesi */
-        .rules-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .rules-list li {
-            background-color: var(--secondary-bg-color);
-            border: 1px solid var(--border-color);
-            padding: 15px 20px;
-            margin-bottom: 10px;
-            border-radius: 8px;
-            display: flex;
-            align-items: flex-start;
-            box-shadow: 0 2px 5px var(--shadow-color);
-        }
-
-        .rules-list li::before {
-            content: '»';
-            color: var(--accent-color);
-            font-size: 1.5em;
-            margin-right: 10px;
-            font-weight: bold;
-        }
-
-        /* Ekip Kartları */
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .team-member {
-            background-color: var(--secondary-bg-color);
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            padding: 25px;
-            text-align: center;
-            box-shadow: 0 6px 12px var(--shadow-color);
-            transition: transform 0.3s ease;
-        }
-
-        .team-member:hover {
-            transform: translateY(-8px);
-        }
-
-        .team-member img {
-            /* Resimler kaldırıldığı için sadece yer tutucu stilini koruyoruz */
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--accent-color);
-            margin-bottom: 15px;
-            box-shadow: 0 0 10px var(--accent-color);
-            /* Yer tutucu arka planı */
-            background-color: #333;
-            content: ''; /* Resmi sildiğimiz için content koyuyoruz */
-            display: block; 
-            margin: 0 auto 15px auto;
-        }
-
-        /* Haberler Bölümü Stili */
-        .news-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Daha geniş haber kartları */
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .news-card {
-            background-color: var(--secondary-bg-color);
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            box-shadow: 0 8px 16px var(--shadow-color);
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-        }
-
-        .news-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background-color: var(--accent-color);
-            transform: translateY(-100%);
-            transition: transform 0.3s ease-out;
-        }
-
-        .news-card:hover::before {
-            transform: translateY(0);
-        }
-
-        .news-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 12px 24px var(--shadow-color);
-        }
-
-        .news-image {
-            width: 100%;
-            height: 220px; /* Haber görseli için sabit yükseklik */
-            object-fit: cover;
-            border-bottom: 1px solid var(--border-color);
-            /* Yer tutucu arka planı */
-            background-color: #444;
-        }
-
-        .news-content {
-            padding: 25px;
-        }
-
-        .news-content h3 {
-            color: #fff;
-            font-size: 1.8em;
-            margin-top: 0;
-            margin-bottom: 10px;
-        }
-
-        .news-content p {
-            font-size: 0.95em;
-            color: var(--text-color);
-            margin-bottom: 15px;
-        }
-
-        .news-meta {
-            font-size: 0.85em;
-            color: #888;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .read-more-button {
-            display: inline-block;
-            background-color: var(--accent-color);
-            color: var(--main-bg-color);
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.95em;
-            font-weight: bold;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            margin-top: 15px;
-        }
-
-        .read-more-button:hover {
-            background-color: var(--button-hover-bg);
-            transform: translateY(-3px);
-        }
-        
-        /* Leaderboards Bölümü Stilleri */
-        #leaderboards {
-            background-color: var(--secondary-bg-color);
-        }
-        
-        .tabs {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 30px;
-            background-color: #111;
-            border-radius: 10px;
-            border: 1px solid var(--border-color);
-            padding: 5px;
-            flex-wrap: wrap; /* Küçük ekranlarda sarmalama */
-        }
-
-        .tab-button {
-            background: none;
-            border: none;
-            padding: 15px 30px;
-            color: var(--text-color);
-            font-size: 1.1em;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s ease, color 0.3s ease;
-            border-radius: 8px;
-            margin: 5px; /* Butonlar arasında biraz boşluk */
-            flex-grow: 1; /* Butonların eşit genişlikte olması için */
-            max-width: 300px; /* Çok genişlemelerini engellemek için */
-        }
-
-        .tab-button.active {
-            background-color: var(--accent-color);
-            color: var(--main-bg-color);
-            box-shadow: 0 4px 10px rgba(255, 193, 7, 0.4);
-        }
-
-        .tab-content {
-            display: none;
-            padding: 20px 0;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        .leaderboard-table {
-            width: 100%;
-            border-collapse: collapse;
-            background-color: var(--main-bg-color);
-            border-radius: 10px;
+            border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 10px 20px var(--shadow-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .leaderboard-table th, .leaderboard-table td {
-            padding: 15px;
-            text-align: left;
-            border-bottom: 1px solid var(--border-color);
+        .mode-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px var(--shadow-color);
         }
 
-        .leaderboard-table th {
-            background-color: #3a3a3a;
-            color: var(--accent-color);
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.1em;
-        }
-
-        .leaderboard-table tr:nth-child(even) {
-            background-color: #1f1f1f;
-        }
-
-        .leaderboard-table tr:hover {
-            background-color: #333;
+        .mode-image {
+            width: 100%;
+            height: 200px;
+            background-color: #333; /* Resim yoksa yer tutucu renk */
+            background-size: cover;
+            background-position: center;
+            border-bottom: 3px solid var(--accent-color);
         }
         
-        .leaderboard-table td:first-child {
-            font-weight: bold;
+        /* Arka Plan Resimleri (Yer tutucu olarak) */
+        .mode-image.boxpvp { 
+            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://i.imgur.com/boxpvp-image-placeholder.jpg'); 
+        }
+        .mode-image.survival { 
+            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://i.imgur.com/survival-image-placeholder.jpg'); 
+        }
+        .mode-image.skyblock { 
+            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://i.imgur.com/skyblock-image-placeholder.jpg'); 
+        }
+
+        .mode-content {
+            padding: 25px;
             text-align: center;
-            width: 50px; /* Sıra numarası için sabit genişlik */
+        }
+
+        .mode-content h3 {
+            font-size: 2em;
+            margin-top: 0;
+            color: #fff;
+        }
+
+        .mode-content p {
+            font-size: 0.95em;
+            margin-bottom: 20px;
         }
         
-        /* İlk 3 sıra için özel stil */
-        .leaderboard-table tr:nth-child(1) {
-            background-color: #4CAF50; /* Yeşil - 1. sıra */
-            color: #fff;
-            font-size: 1.1em;
-            font-weight: bold;
-        }
-        .leaderboard-table tr:nth-child(2) {
-            background-color: #FF9800; /* Turuncu - 2. sıra */
-            color: #fff;
-            font-size: 1.05em;
-        }
-        .leaderboard-table tr:nth-child(3) {
-            background-color: #795548; /* Kahverengi - 3. sıra */
-            color: #fff;
-            font-size: 1.05em;
-        }
-        
-        .leaderboard-table tr:nth-child(1) td,
-        .leaderboard-table tr:nth-child(2) td,
-        .leaderboard-table tr:nth-child(3) td {
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-
-        /* Sosyal Medya */
-        .social-links {
-            text-align: center;
-            margin-top: 50px;
-        }
-
-        .social-links a {
+        .button {
             display: inline-block;
-            margin: 0 15px;
-            font-size: 2.5em;
-            color: var(--text-color);
-            transition: color 0.3s ease, transform 0.3s ease;
+            background-color: var(--accent-color);
+            color: var(--main-bg-color);
+            padding: 12px 25px;
+            border-radius: 6px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
 
-        .social-links a:hover {
-            color: var(--accent-color);
-            transform: translateY(-5px) scale(1.1);
+        .button:hover {
+            background-color: var(--button-hover-bg);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
         }
 
         /* Footer */
         footer {
-            background-color: #111;
+            background-color: var(--secondary-bg-color);
             color: var(--text-color);
             text-align: center;
             padding: 30px 0;
             border-top: 2px solid var(--border-color);
             font-size: 0.9em;
         }
-
-        /* Responsive Tasarım */
-        @media (max-width: 992px) {
-             .leaderboard-table, .leaderboard-table thead, .leaderboard-table tbody, .leaderboard-table th, .leaderboard-table td, .leaderboard-table tr { 
-                display: block; 
-            }
-            .leaderboard-table thead tr { 
-                position: absolute;
-                top: -9999px;
-                left: -9999px;
-            }
-            .leaderboard-table tr { 
-                border: 1px solid var(--border-color);
-                margin-bottom: 10px;
-                border-radius: 10px;
-                overflow: hidden;
-            }
-            .leaderboard-table td { 
-                border: none;
-                border-bottom: 1px solid var(--border-color);
-                position: relative;
-                padding-left: 50%; /* İçeriği sağa itmek için */
-                text-align: right;
-            }
-            .leaderboard-table td:before { 
-                position: absolute;
-                top: 0;
-                left: 6px;
-                width: 45%; /* Etiket genişliği */
-                padding-right: 10px; 
-                white-space: nowrap;
-                text-align: left;
-                font-weight: bold;
-                color: var(--accent-color);
-            }
-            /* Mobil görünümde her sütun için başlık */
-            .leaderboard-table#kills td:nth-of-type(1):before { content: "Sıra:"; }
-            .leaderboard-table#kills td:nth-of-type(2):before { content: "Oyuncu:"; }
-            .leaderboard-table#kills td:nth-of-type(3):before { content: "Kill Sayısı:"; }
-
-            .leaderboard-table#deaths td:nth-of-type(1):before { content: "Sıra:"; }
-            .leaderboard-table#deaths td:nth-of-type(2):before { content: "Oyuncu:"; }
-            .leaderboard-table#deaths td:nth-of-type(3):before { content: "Ölme Sayısı:"; }
-
-            .leaderboard-table#money td:nth-of-type(1):before { content: "Sıra:"; }
-            .leaderboard-table#money td:nth-of-type(2):before { content: "Oyuncu:"; }
-            .leaderboard-table#money td:nth-of-type(3):before { content: "Bakiye:"; }
-            
-            /* Mobil görünümde ilk 3'ün arka plan ve renklerini normalleştir */
-            .leaderboard-table tr:nth-child(1), .leaderboard-table tr:nth-child(2), .leaderboard-table tr:nth-child(3) {
-                background-color: var(--main-bg-color); /* Normal arka plan */
-                color: var(--text-color); /* Normal metin rengi */
-            }
-            .leaderboard-table tr:nth-child(odd) { /* Tek satırlar için mobil arka plan */
-                background-color: var(--main-bg-color);
-            }
-            .leaderboard-table tr:nth-child(even) { /* Çift satırlar için mobil arka plan */
-                background-color: #1f1f1f;
-            }
-            /* Mobil görünümde ilk 3'ün etiket renklerini geri getirme */
-            .leaderboard-table tr:nth-child(1) td:before { color: #4CAF50; }
-            .leaderboard-table tr:nth-child(2) td:before { color: #FF9800; }
-            .leaderboard-table tr:nth-child(3) td:before { color: #795548; }
-
+        
+        .social-links a {
+            font-size: 1.5em;
+            margin: 0 10px;
         }
-
+        
+        /* Responsive */
         @media (max-width: 768px) {
             .navbar {
                 flex-direction: column;
             }
             .nav-links {
                 margin-top: 15px;
-                flex-wrap: wrap;
                 justify-content: center;
             }
             .nav-links li {
-                margin: 0 10px 10px 10px;
+                margin: 0 10px;
             }
             .hero h1 {
                 font-size: 3em;
             }
-            .hero p {
+            .ip-box {
                 font-size: 1.2em;
-            }
-            .hero .ip-address {
-                font-size: 1.5em;
-                padding: 10px 20px;
             }
             .section-title {
                 font-size: 2.5em;
-            }
-            .card-grid, .team-grid, .news-grid {
-                grid-template-columns: 1fr;
-            }
-            .tabs {
-                flex-direction: column;
-            }
-            .tab-button {
-                margin: 5px 0;
             }
         }
     </style>
@@ -710,13 +284,10 @@
             <a href="#home" class="logo">VALORİA<span>CRAFT</span></a>
             <nav>
                 <ul class="nav-links">
-                    <li><a href="#home" class="active">Ana Sayfa</a></li>
-                    <li><a href="#features">Özellikler</a></li>
-                    <li><a href="#news">Haberler</a></li>
-                    <li><a href="#leaderboards">Liderlik Tabloları</a></li>
-                    <li><a href="#rules">Kurallar</a></li>
-                    <li><a href="#team">Ekip</a></li>
+                    <li><a href="#gamemodes">Oyun Modları</a></li>
                     <li><a href="store.html">Mağaza</a></li>
+                    <li><a href="leaderboard.html">Sıralamalar</a></li>
+                    <li><a href="https://discord.gg/valoria" target="_blank">Discord</a></li>
                 </ul>
             </nav>
         </div>
@@ -724,306 +295,60 @@
 
     <main>
         <section id="home" class="hero">
-            <div class="hero-content">
-                <h1>VALORİA CRAFT</h1>
-                <p>Heyecan Dolu BoxPvP Deneyimi - Sürüm 1.20.1</p>
-                <div class="ip-address" id="ip-display">PLAY.VALORIACRAFT.COM</div>
-            </div>
+            <h1>VALORİA CRAFT</h1>
+            <p>Eşsiz BoxPvP, Survival ve SkyBlock Deneyimleri Tek Adreste!</p>
+            <div class="ip-box" id="ip-display">PLAY.VALORIACRAFT.COM</div>
         </section>
 
-        <section id="features">
+        <section id="gamemodes">
             <div class="container">
-                <h2 class="section-title">Neden VALORİA CRAFT?</h2>
-                <div class="card-grid">
-                    <div class="card">
-                        <h3>Eşsiz BoxPvP Deneyimi</h3>
-                        <p>Kendi kutunuzda gelişin, diğer oyuncularla savaşın ve liderlik tablosunda zirveye ulaşın!</p>
+                <h2 class="section-title">Oyun Modlarımız</h2>
+                
+                <div class="mode-grid">
+                    
+                    <div class="mode-card">
+                        <div class="mode-image boxpvp"></div>
+                        <div class="mode-content">
+                            <h3>BoxPvP</h3>
+                            <p>Kendi küçük kutunuzda güçlü rakiplerle savaşın, liderlik tablolarında zirveye tırmanın ve özel eşyaların sahibi olun. PvP becerilerinizi sergileyin!</p>
+                            <a href="#" class="button">Daha Fazla Bilgi</a>
+                        </div>
                     </div>
-                    <div class="card">
-                        <h3>Denge Ayarlı Ekonomi</h3>
-                        <p>Adil ve dengeli bir ekonomi ile emeğinizin karşılığını alın. Ticaret yapın ve zenginleşin.</p>
+                    
+                    <div class="mode-card">
+                        <div class="mode-image survival"></div>
+                        <div class="mode-content">
+                            <h3>Survival</h3>
+                            <p>Sıfırdan başlayarak destansı yapılar inşa edin, arkadaşlarınızla birleşin ve vahşi doğada hayatta kalın. Tamamen özgür bir dünya!</p>
+                            <a href="#" class="button">Daha Fazla Bilgi</a>
+                        </div>
                     </div>
-                    <div class="card">
-                        <h3>Aktif ve Dost Canlısı Topluluk</h3>
-                        <p>Her zaman size destek olmaya hazır, büyüyen Discord sunucumuza katılın ve yeni arkadaşlar edinin.</p>
-                    </div>
-                    <div class="card">
-                        <h3>7/24 Sunucu Erişimi</h3>
-                        <p>Kesintisiz oyun keyfi için yüksek performanslı sunucularımızla her zaman online'ız.</p>
-                    </div>
-                </div>
-
-                <div class="server-status-box">
-                    <h3>Sunucu Durumu</h3>
-                    <p><span class="status-indicator status-online"></span> Durum: <strong style="color: #4CAF50;">Online</strong></p>
-                    <p class="player-count">Oyuncu Sayısı: <span id="player-count">--</span> / 500</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="news">
-            <div class="container">
-                <h2 class="section-title">Son Haberler</h2>
-                <div class="news-grid">
-                    <div class="news-card">
-                        <div class="news-image"></div> <div class="news-content">
-                            <h3>Yeni BoxPvP Sezonu Başladı!</h3>
-                            <p>Büyük yeniliklerle dolu yeni BoxPvP sezonumuz yayında! Yeni harita, özel eşyalar ve daha fazlası sizi bekliyor.</p>
-                            <div class="news-meta">
-                                <span><i class="fas fa-calendar-alt"></i> 10 Ekim 2023</span>
-                                <span><i class="fas fa-user"></i> AdminName</span>
-                            </div>
-                            <a href="#" class="read-more-button">Devamını Oku</a>
+                    
+                    <div class="mode-card">
+                        <div class="mode-image skyblock"></div>
+                        <div class="mode-content">
+                            <h3>SkyBlock</h3>
+                            <p>Gökyüzündeki küçük bir adada kaynaklarınızı yönetin, adanızı büyütün ve diğer oyuncularla ticaret yapın. Sınırsız yaratıcılık ve strateji!</p>
+                            <a href="#" class="button">Daha Fazla Bilgi</a>
                         </div>
                     </div>
 
-                    <div class="news-card">
-                        <div class="news-image"></div> <div class="news-content">
-                            <h3>Cadılar Bayramı Özel Etkinliği!</h3>
-                            <p>Korkunç indirimler ve sürpriz ödüllerle dolu Cadılar Bayramı etkinliğimiz başladı. Bu fırsatı kaçırmayın!</p>
-                            <div class="news-meta">
-                                <span><i class="fas fa-calendar-alt"></i> 25 Ekim 2023</span>
-                                <span><i class="fas fa-user"></i> ModName</span>
-                            </div>
-                            <a href="#" class="read-more-button">Devamını Oku</a>
-                        </div>
-                    </div>
-
-                    <div class="news-card">
-                        <div class="news-image"></div> <div class="news-content">
-                            <h3>Sunucu Bakım ve Yama Notları</h3>
-                            <p>Performans iyileştirmeleri ve küçük hata düzeltmeleri içeren son yama notlarımıza göz atın.</p>
-                            <div class="news-meta">
-                                <span><i class="fas fa-calendar-alt"></i> 05 Kasım 2023</span>
-                                <span><i class="fas fa-user"></i> AdminName</span>
-                            </div>
-                            <a href="#" class="read-more-button">Devamını Oku</a>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="leaderboards">
-            <div class="container">
-                <h2 class="section-title">Liderlik Tabloları</h2>
-
-                <div class="tabs">
-                    <button class="tab-button active" onclick="openLeaderboard(event, 'kills')">En Çok Kill</button>
-                    <button class="tab-button" onclick="openLeaderboard(event, 'deaths')">En Çok Ölme</button>
-                    <button class="tab-button" onclick="openLeaderboard(event, 'money')">En Zengin</button>
-                </div>
-
-                <div id="kills" class="tab-content active">
-                    <table class="leaderboard-table" id="kills">
-                        <thead>
-                            <tr>
-                                <th>Sıra</th>
-                                <th>Oyuncu</th>
-                                <th>Kill Sayısı</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>1</td><td>PlayerName_1</td><td>1250</td></tr>
-                            <tr><td>2</td><td>PlayerName_2</td><td>1120</td></tr>
-                            <tr><td>3</td><td>PlayerName_3</td><td>980</td></tr>
-                            <tr><td>4</td><td>PlayerName_4</td><td>850</td></tr>
-                            <tr><td>5</td><td>PlayerName_5</td><td>720</td></tr>
-                            <tr><td>6</td><td>PlayerName_6</td><td>610</td></tr>
-                            <tr><td>7</td><td>PlayerName_7</td><td>580</td></tr>
-                            <tr><td>8</td><td>PlayerName_8</td><td>490</td></tr>
-                            <tr><td>9</td><td>PlayerName_9</td><td>360</td></tr>
-                            <tr><td>10</td><td>PlayerName_10</td><td>250</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div id="deaths" class="tab-content">
-                    <table class="leaderboard-table" id="deaths">
-                        <thead>
-                            <tr>
-                                <th>Sıra</th>
-                                <th>Oyuncu</th>
-                                <th>Ölme Sayısı</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>1</td><td>PlayerName_1</td><td>800</td></tr>
-                            <tr><td>2</td><td>PlayerName_2</td><td>750</td></tr>
-                            <tr><td>3</td><td>PlayerName_3</td><td>690</td></tr>
-                            <tr><td>4</td><td>PlayerName_4</td><td>620</td></tr>
-                            <tr><td>5</td><td>PlayerName_5</td><td>550</td></tr>
-                            <tr><td>6</td><td>PlayerName_6</td><td>480</td></tr>
-                            <tr><td>7</td><td>PlayerName_7</td><td>410</td></tr>
-                            <tr><td>8</td><td>PlayerName_8</td><td>350</td></tr>
-                            <tr><td>9</td><td>PlayerName_9</td><td>290</td></tr>
-                            <tr><td>10</td><td>PlayerName_10</td><td>230</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div id="money" class="tab-content">
-                    <table class="leaderboard-table" id="money">
-                        <thead>
-                            <tr>
-                                <th>Sıra</th>
-                                <th>Oyuncu</th>
-                                <th>Bakiye</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>1</td><td>PlayerName_1</td><td>$150,000</td></tr>
-                            <tr><td>2</td><td>PlayerName_2</td><td>$130,000</td></tr>
-                            <tr><td>3</td><td>PlayerName_3</td><td>$110,000</td></tr>
-                            <tr><td>4</td><td>PlayerName_4</td><td>$95,000</td></tr>
-                            <tr><td>5</td><td>PlayerName_5</td><td>$80,000</td></tr>
-                            <tr><td>6</td><td>PlayerName_6</td><td>$65,000</td></tr>
-                            <tr><td>7</td><td>PlayerName_7</td><td>$50,000</td></tr>
-                            <tr><td>8</td><td>PlayerName_8</td><td>$40,000</td></tr>
-                            <tr><td>9</td><td>PlayerName_9</td><td>$30,000</td></tr>
-                            <tr><td>10</td><td>PlayerName_10</td><td>$20,000</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </section>
-
-        <section id="rules">
-            <div class="container">
-                <h2 class="section-title">Sunucu Kuralları</h2>
-                <ul class="rules-list">
-                    <li>Küfür ve argo kelimeler kullanmak yasaktır. Herkesin saygılı bir ortamda oynamaya hakkı vardır.</li>
-                    <li>Hile (client, bug abuse vb.) kullanmak kalıcı ban sebebidir. Adil oyun ortamını bozmayın.</li>
-                    <li>Spam yapmak veya flood atmak yasaktır. Sohbeti gereksiz yere meşgul etmeyin.</li>
-                    <li>Reklam yapmak (başka sunucu, site vb.) yasaktır. Bu tür içerikler doğrudan ban ile sonuçlanır.</li>
-                    <li>Her türlü taciz ve nefret söylemi yasaktır. Sunucumuzda ırkçılık, cinsiyetçilik veya herhangi bir ayrımcılığa izin verilmez.</li>
-                    <li>Minecraft dışındaki kişisel bilgileri paylaşmak veya istemek yasaktır. Gizliliğinizi koruyun.</li>
-                    <li>Yetkililere karşı saygılı olun. Onların görevleri düzeni sağlamaktır.</li>
-                    <li>Siyasi veya dini tartışmalar başlatmak yasaktır. Bu tür konular sunucumuzun amacı dışındadır.</li>
-                    <li>Hesap paylaşımı veya satışı yasaktır. Hesabınızın güvenliğinden siz sorumlusunuz.</li>
-                    <li>Oyun içi ekonomi manipülasyonu veya bugları kötüye kullanmak yasaktır. Adil ticareti teşvik edin.</li>
-                </ul>
-            </div>
-        </section>
-
-        <section id="team">
-            <div class="container">
-                <h2 class="section-title">Ekibimiz</h2>
-                <div class="team-grid">
-                    <div class="team-member">
-                        <div class="team-member-img-placeholder"></div>
-                        <h4>AdminNick1</h4>
-                        <p>Kurucu & Geliştirici</p>
-                    </div>
-                    <div class="team-member">
-                        <div class="team-member-img-placeholder"></div>
-                        <h4>AdminNick2</h4>
-                        <p>Yönetici</p>
-                    </div>
-                    <div class="team-member">
-                        <div class="team-member-img-placeholder"></div>
-                        <h4>ModNick1</h4>
-                        <p>Moderatör</p>
-                    </div>
-                    <div class="team-member">
-                        <div class="team-member-img-placeholder"></div>
-                        <h4>ModNick2</h4>
-                        <p>Moderatör</p>
-                    </div>
-                </div>
-            </div>
-        </section>
     </main>
     
     <footer>
         <div class="container">
             <div class="social-links">
-                <a href="https://discord.gg/yourdiscordlink" target="_blank" aria-label="Discord"><i class="fab fa-discord"></i></a>
-                <a href="https://twitter.com/yourtwitterlink" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                <a href="https://instagram.com/yourinstagramlink" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://discord.gg/valoria" target="_blank" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                <a href="https://twitter.com/valoriacraft" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://instagram.com/valoriacraft" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
             </div>
-            <p>&copy; 2023 VALORİA CRAFT. Tüm hakları saklıdır.</p>
-            <p>Destek ve İletişim: support@valoriacraft.com</p>
+            <p>&copy; 2025 VALORİA CRAFT. Tüm hakları saklıdır.</p>
         </div>
     </footer>
 
-    <script>
-        // Navbar scroll active class
-        document.addEventListener("DOMContentLoaded", function() {
-            const navLinks = document.querySelectorAll('.nav-links a');
-            const sections = document.querySelectorAll('section');
-
-            function changeLinkState() {
-                // Header yüksekliğini dikkate alarak ayarla
-                const headerHeight = 97; 
-                let index = sections.length;
-
-                while(--index && window.scrollY + headerHeight < sections[index].offsetTop) {} 
-
-                navLinks.forEach((link) => link.classList.remove('active'));
-                if (navLinks[index]) {
-                    navLinks[index].classList.add('active');
-                }
-            }
-
-            changeLinkState();
-            window.addEventListener('scroll', changeLinkState);
-
-            // Smooth scrolling
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href').substring(1);
-                    const targetSection = document.getElementById(targetId);
-                    window.scrollTo({
-                        top: targetSection.offsetTop - 96, // Fixed header için ayar
-                        behavior: 'smooth'
-                    });
-                });
-            });
-
-            // IP Address copy to clipboard
-            const ipDisplay = document.getElementById('ip-display');
-            if (ipDisplay) {
-                ipDisplay.addEventListener('click', function() {
-                    const ip = this.textContent;
-                    navigator.clipboard.writeText(ip).then(() => {
-                        const originalText = this.textContent;
-                        this.textContent = 'Kopyalandı!';
-                        setTimeout(() => {
-                            this.textContent = originalText;
-                        }, 1500);
-                    }).catch(err => {
-                        console.error('IP kopyalanırken hata oluştu:', err);
-                    });
-                });
-            }
-
-            // Server status (placeholder, you'd integrate with a real API)
-            const playerCountElement = document.getElementById('player-count');
-            if (playerCountElement) {
-                // Simulate player count for now
-                playerCountElement.textContent = Math.floor(Math.random() * 200) + 50; 
-            }
-        });
-
-        // Leaderboard tabs functionality
-        function openLeaderboard(evt, leaderboardName) {
-            var i, tabcontent, tabbuttons;
-
-            tabcontent = document.getElementsByClassName("tab-content");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-            }
-
-            tabbuttons = document.getElementsByClassName("tab-button");
-            for (i = 0; i < tabbuttons.length; i++) {
-                tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
-            }
-
-            document.getElementById(leaderboardName).style.display = "block";
-            evt.currentTarget.className += " active";
-        }
-    </script>
-</body>
+    </body>
 </html>
