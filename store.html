@@ -7,15 +7,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
-        /* Global Ayarlar (index.html ile uyumlu) */
+        /* Global & Renk Ayarları (Aydınlık Tema) */
         :root {
-            --main-bg-color: #1a1a1a;
-            --secondary-bg-color: #2c2c2c;
-            --accent-color: #FFC107; /* VALORİA CRAFT turuncumsu sarısı */
-            --text-color: #e0e0e0;
-            --border-color: #444;
-            --shadow-color: rgba(0, 0, 0, 0.4);
-            --button-hover-bg: #e6b100;
+            --main-bg-color: #f0f0f0; /* Açık/Beyaz arka plan */
+            --secondary-bg-color: #ffffff; /* Kart arka planı (Daha beyaz) */
+            --accent-color: #007bff; /* Mavi vurgu rengi */
+            --accent-hover: #0056b3; /* Mavi hover rengi */
+            --text-color: #333333; /* Koyu metin rengi */
+            --light-text-color: #666; /* Açık gri metin */
+            --border-color: #e0e0e0;
+            --shadow-color: rgba(0, 0, 0, 0.1);
         }
 
         body {
@@ -25,10 +26,9 @@
             background-color: var(--main-bg-color);
             color: var(--text-color);
             line-height: 1.6;
-            overflow-x: hidden;
         }
 
-        h1, h2, h3, h4, h5, h6 {
+        h1, h2, h3, h4 {
             font-family: 'Orbitron', sans-serif;
             color: var(--accent-color);
             margin-bottom: 15px;
@@ -41,7 +41,7 @@
         }
 
         a:hover {
-            color: #fff;
+            color: var(--accent-hover);
         }
 
         .container {
@@ -51,12 +51,12 @@
             padding: 20px 0;
         }
 
-        /* Header / Navbar (index.html ile aynı) */
+        /* Header / Navbar */
         header {
             background-color: var(--secondary-bg-color);
             padding: 15px 0;
             border-bottom: 2px solid var(--border-color);
-            box-shadow: 0 4px 8px var(--shadow-color);
+            box-shadow: 0 4px 10px var(--shadow-color);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -74,12 +74,11 @@
             font-size: 2.2em;
             font-weight: 700;
             color: var(--accent-color);
-            text-shadow: 0 0 10px rgba(255, 193, 7, 0.5);
-            letter-spacing: 2px;
+            text-shadow: none;
         }
 
         .logo span {
-            color: #fff;
+            color: var(--text-color);
         }
 
         .nav-links {
@@ -92,293 +91,194 @@
         .nav-links li {
             margin-left: 30px;
         }
-
+        
         .nav-links a {
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.1em;
+            font-size: 1em;
             color: var(--text-color);
-            padding: 5px 0;
             position: relative;
         }
 
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--accent-color);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after,
-        .nav-links a.active::after { /* Aktif link için */
-            width: 100%;
-        }
-        .nav-links a.active { /* Aktif link rengi */
+        .nav-links a:hover, .nav-links a.active {
             color: var(--accent-color);
         }
-
-        /* Section Title */
-        .section-title {
-            text-align: center;
-            font-size: 3em;
-            margin-top: 60px;
-            margin-bottom: 50px;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background-color: var(--accent-color);
-            border-radius: 2px;
-        }
-
-        /* Yeni Eklenen Stiller */
-
-        /* Ana Kategori Kutusu (BOXPVP) */
-        .main-category-box {
-            position: relative;
-            width: 100%;
-            height: 400px; /* Büyük bir kutu */
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://i.imgur.com/example_boxpvp_background.jpg') no-repeat center center/cover;
-            border: 3px solid var(--accent-color);
-            border-radius: 15px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            overflow: hidden;
-            box-shadow: 0 0 25px var(--accent-color);
-            transition: all 0.3s ease;
-            margin-bottom: 50px; /* Ürün ızgarası ile arasına boşluk */
-        }
-
-        .main-category-box:hover {
-            transform: translateY(-5px) scale(1.01);
-            box-shadow: 0 0 35px var(--accent-color), 0 0 15px rgba(0,0,0,0.5);
-        }
-
-        .main-category-box h2 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 5em;
-            color: var(--accent-color);
-            text-shadow: 0 0 20px rgba(255, 193, 7, 0.7), 0 0 10px #000;
-            letter-spacing: 5px;
-            z-index: 2;
-        }
-
-        /* Alt Kategori Kutuları */
-        .sub-category-grid {
-            display: none; /* Varsayılan olarak gizli */
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-bottom: 50px;
-        }
-
-        .sub-category-box {
+        
+        /* Banner/Hero Başlık */
+        .page-banner {
             background-color: var(--secondary-bg-color);
-            border: 2px solid var(--border-color);
-            border-radius: 10px;
-            height: 180px; /* Daha küçük kutular */
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            padding: 60px 0 40px 0;
             text-align: center;
-            cursor: pointer;
-            box-shadow: 0 6px 12px var(--shadow-color);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
+            border-bottom: 2px solid var(--border-color);
+            box-shadow: 0 2px 5px var(--shadow-color);
         }
 
-        .sub-category-box::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
+        .page-banner h1 {
+            font-size: 3.5em;
+            color: var(--accent-hover);
+            margin-bottom: 5px;
+        }
+
+        .page-banner p {
+            font-size: 1.1em;
+            color: var(--light-text-color);
+        }
+
+        /* Mağaza İçeriği */
+        #store-content {
+            display: flex;
+            padding: 40px 0;
+        }
+        
+        /* Sidebar (Kategoriler) */
+        .sidebar {
+            width: 250px;
+            margin-right: 30px;
+            padding: 20px;
+            background-color: var(--secondary-bg-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 8px var(--shadow-color);
+            height: fit-content; /* İçeriğe göre yükseklik */
+        }
+        
+        .sidebar h3 {
+            font-size: 1.5em;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        
+        .category-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .category-list li {
+            margin-bottom: 10px;
+        }
+        
+        .category-list a {
+            display: block;
+            padding: 10px 15px;
+            background-color: var(--main-bg-color);
+            border-radius: 8px;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+        
+        .category-list a:hover, .category-list a.active {
             background-color: var(--accent-color);
-            transform: translateY(-100%);
-            transition: transform 0.3s ease-out;
+            color: #ffffff;
+            border-color: var(--accent-hover);
         }
 
-        .sub-category-box:hover::before {
-            transform: translateY(0);
-        }
-
-        .sub-category-box:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 8px 16px var(--shadow-color);
-            border-color: var(--accent-color);
-        }
-
-        .sub-category-box h3 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2.2em;
-            color: #fff;
-            text-shadow: 0 0 10px var(--accent-color);
-            margin: 0;
-            z-index: 2;
-        }
-
-        /* Ürün Kartları (Öncekiyle aynı, ancak varsayılan olarak gizli) */
-        .product-grid {
+        /* Ürün Listesi */
+        .product-list {
+            flex-grow: 1;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
-            display: none; /* Varsayılan olarak gizli */
         }
 
         .product-card {
             background-color: var(--secondary-bg-color);
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            box-shadow: 0 8px 16px var(--shadow-color);
+            border-radius: 12px;
             overflow: hidden;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 5px 15px var(--shadow-color);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .product-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background-color: var(--accent-color);
-            transform: translateY(-100%);
-            transition: transform 0.0s ease-out; /* Başlangıçta gizli */
-        }
-        .product-card:hover::before {
-            transform: translateY(0%);
-            transition: transform 0.3s ease-out; /* Hover'da görünür */
+            text-align: center;
         }
 
         .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 12px 24px var(--shadow-color);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
         }
 
         .product-image {
             width: 100%;
-            height: 200px; /* Sabit yükseklik */
-            object-fit: cover;
-            border-bottom: 1px solid var(--border-color);
-            /* Test için geçici arka plan rengi */
-            background-color: #3d3d3d;
+            height: 200px;
+            background-color: #ccc; /* Yer tutucu renk */
+            background-size: cover;
+            background-position: center;
+            border-bottom: 3px solid var(--accent-color);
+            /* Örnek Görsel Yer Tutucuları */
+            background-image: url('https://i.imgur.com/product-image-placeholder.png');
         }
 
-        .product-info {
+        .product-content {
             padding: 20px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
         }
-
-        .product-info h3 {
-            color: #fff;
+        
+        .product-content h3 {
             font-size: 1.8em;
-            margin-top: 0;
-            margin-bottom: 10px;
-        }
-
-        .product-info .price {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.6em;
-            color: var(--accent-color);
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
-
-        .product-info ul {
-            list-style: none;
-            padding: 0;
-            margin-bottom: 20px;
-            flex-grow: 1; /* Özelliklerin yerleşimi için */
-        }
-
-        .product-info ul li {
-            font-size: 0.95em;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-        }
-
-        .product-info ul li i {
-            color: #4CAF50; /* Yeşil ikonlar */
-            margin-right: 8px;
-            font-size: 1.1em;
-        }
-
-        .buy-button {
-            display: block;
-            width: calc(100% - 0px); /* Padding'i hesaba kat */
-            padding: 12px 20px;
-            background-color: var(--accent-color);
-            color: var(--main-bg-color);
-            text-align: center;
-            border-radius: 8px;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.1em;
-            font-weight: bold;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            margin-top: 15px; /* Özelliklerden sonra boşluk */
-            text-decoration: none; /* Link olarak kullanılacağı için */
-        }
-
-        .buy-button:hover {
-            background-color: var(--button-hover-bg);
-            transform: translateY(-3px);
-        }
-
-        /* Footer (index.html ile aynı) */
-        footer {
-            background-color: #111;
+            margin-bottom: 5px;
             color: var(--text-color);
+        }
+        
+        .product-price {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: #d9534f; /* Kırmızı fiyat vurgusu */
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: #ffffff;
+            padding: 12px 25px;
+            border-radius: 6px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--secondary-bg-color);
+            color: var(--light-text-color);
             text-align: center;
             padding: 30px 0;
             border-top: 2px solid var(--border-color);
             font-size: 0.9em;
-            margin-top: 60px; /* Üstteki içerikten boşluk */
+        }
+        
+        .social-links a {
+            font-size: 1.5em;
+            margin: 0 10px;
+            color: var(--light-text-color);
         }
 
-        /* Responsive Tasarım */
-        @media (max-width: 768px) {
-            .navbar {
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            #store-content {
                 flex-direction: column;
             }
-            .nav-links {
-                margin-top: 15px;
-                flex-wrap: wrap;
-                justify-content: center;
+            .sidebar {
+                width: 100%;
+                margin-right: 0;
+                margin-bottom: 30px;
             }
-            .nav-links li {
-                margin: 0 10px 10px 10px;
+            .product-list {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             }
-            .section-title {
+        }
+        @media (max-width: 576px) {
+            .page-banner h1 {
                 font-size: 2.5em;
-            }
-            .main-category-box h2 {
-                font-size: 3em;
-            }
-            .sub-category-grid {
-                grid-template-columns: 1fr;
-            }
-            .product-grid {
-                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -389,178 +289,112 @@
             <a href="index.html" class="logo">VALORİA<span>CRAFT</span></a>
             <nav>
                 <ul class="nav-links">
-                    <li><a href="index.html#home">Ana Sayfa</a></li>
-                    <li><a href="index.html#features">Özellikler</a></li>
-                    <li><a href="index.html#rules">Kurallar</a></li>
-                    <li><a href="index.html#team">Ekip</a></li>
+                    <li><a href="index.html#gamemodes">Oyun Modları</a></li>
                     <li><a href="store.html" class="active">Mağaza</a></li>
+                    <li><a href="leaderboard.html">Sıralamalar</a></li>
+                    <li><a href="https://discord.gg/valoria" target="_blank">Discord</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <main>
-        <section id="store">
-            <div class="container">
-                <h2 class="section-title">Mağaza</h2>
-
-                <div class="main-category-box" id="boxpvp-category-box">
-                    <h2>BOXPVP</h2>
-                </div>
-
-                <div class="sub-category-grid" id="sub-category-selection">
-                    <div class="sub-category-box" data-category="ranks">
-                        <h3>RANKLAR</h3>
-                    </div>
-                    <div class="sub-category-box" data-category="keys">
-                        <h3>KASA ANAHTARLARI</h3>
-                    </div>
-                    <div class="sub-category-box" data-category="money">
-                        <h3>PARA</h3>
-                    </div>
-                </div>
-
-                <div class="product-grid" id="product-listing">
-                    <div class="product-card" data-category="ranks">
-                        <img src="https://i.imgur.com/example_rank_vip.png" alt="VIP Rank" class="product-image">
-                        <div class="product-info">
-                            <h3>VIP Rank</h3>
-                            <p class="price">250 TL</p>
-                            <ul>
-                                <li><i class="fas fa-check-circle"></i> Özel Renkli Nick</li>
-                                <li><i class="fas fa-check-circle"></i> +%10 Para Boost</li>
-                                <li><i class="fas fa-check-circle"></i> VIP Özel Kit</li>
-                                <li><i class="fas fa-check-circle"></i> Özel Chat Prefix</li>
-                            </ul>
-                            <a href="#" class="buy-button">Satın Al</a>
-                        </div>
-                    </div>
-
-                    <div class="product-card" data-category="ranks">
-                        <img src="https://i.imgur.com/example_rank_mvp.png" alt="MVP Rank" class="product-image">
-                        <div class="product-info">
-                            <h3>MVP Rank</h3>
-                            <p class="price">500 TL</p>
-                            <ul>
-                                <li><i class="fas fa-check-circle"></i> VIP Özellikleri Dahil</li>
-                                <li><i class="fas fa-check-circle"></i> +%20 Para Boost</li>
-                                <li><i class="fas fa-check-circle"></i> MVP Özel Kit</li>
-                                <li><i class="fas fa-check-circle"></i> Uçma Yeteneği</li>
-                            </ul>
-                            <a href="#" class="buy-button">Satın Al</a>
-                        </div>
-                    </div>
-
-                    <div class="product-card" data-category="keys">
-                        <img src="https://i.imgur.com/example_item_key.png" alt="Kasa Anahtarı" class="product-image">
-                        <div class="product-info">
-                            <h3>Kasa Anahtarı (x1)</h3>
-                            <p class="price">30 TL</p>
-                            <ul>
-                                <li><i class="fas fa-check-circle"></i> Rastgele Ödüller İçerir</li>
-                                <li><i class="fas fa-check-circle"></i> Nadir Eşya Şansı</li>
-                            </ul>
-                            <a href="#" class="buy-button">Satın Al</a>
-                        </div>
-                    </div>
-
-                    <div class="product-card" data-category="keys">
-                        <img src="https://i.imgur.com/example_item_key_bundle.png" alt="Kasa Anahtarı Paketi" class="product-image">
-                        <div class="product-info">
-                            <h3>Kasa Anahtarı (x5)</h3>
-                            <p class="price">120 TL</p>
-                            <ul>
-                                <li><i class="fas fa-check-circle"></i> 5 Adet Kasa Anahtarı</li>
-                                <li><i class="fas fa-check-circle"></i> %10 İndirimli Paket</li>
-                            </ul>
-                            <a href="#" class="buy-button">Satın Al</a>
-                        </div>
-                    </div>
-
-                    <div class="product-card" data-category="money">
-                        <img src="https://i.imgur.com/example_item_money_small.png" alt="Para Paketi Küçük" class="product-image">
-                        <div class="product-info">
-                            <h3>50.000 Oyun Parası</h3>
-                            <p class="price">20 TL</p>
-                            <ul>
-                                <li><i class="fas fa-check-circle"></i> Oyun İçi Para Hızla Kazan</li>
-                            </ul>
-                            <a href="#" class="buy-button">Satın Al</a>
-                        </div>
-                    </div>
-
-                    <div class="product-card" data-category="money">
-                        <img src="https://i.imgur.com/example_item_money_large.png" alt="Para Paketi Büyük" class="product-image">
-                        <div class="product-info">
-                            <h3>200.000 Oyun Parası</h3>
-                            <p class="price">70 TL</p>
-                            <ul>
-                                <li><i class="fas fa-check-circle"></i> En İyi Fiyat Garantisi</li>
-                                <li><i class="fas fa-check-circle"></i> Büyük Miktarda Para</li>
-                            </ul>
-                            <a href="#" class="buy-button">Satın Al</a>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
+        <section class="page-banner">
+            <h1>PREMIUM MAĞAZA</h1>
+            <p>Sunucuya destek ol ve oyun deneyimini kişiselleştir!</p>
         </section>
-    </main>
 
+        <div id="store-content" class="container">
+            
+            <aside class="sidebar">
+                <h3>Kategoriler</h3>
+                <ul class="category-list">
+                    <li><a href="#" class="active"><i class="fas fa-crown"></i> Tüm Ürünler</a></li>
+                    <li><a href="#"><i class="fas fa-gem"></i> Yetkili Rankları</a></li>
+                    <li><a href="#"><i class="fas fa-tools"></i> Özel Kitler</a></li>
+                    <li><a href="#"><i class="fas fa-piggy-bank"></i> Ekonomi (Para/Coin)</a></li>
+                    <li><a href="#"><i class="fas fa-magic"></i> Kozmetikler</a></li>
+                    <li><a href="#"><i class="fas fa-box"></i> Sandıklar & Anahtarlar</a></li>
+                </ul>
+                
+                <h3>Bilgilendirme</h3>
+                <p style="font-size: 0.9em; color: var(--light-text-color);">Tüm ödemeler güvenli altyapılar üzerinden gerçekleşir. Satın aldığınız ürünler anında hesabınıza yüklenir.</p>
+            </aside>
+
+            <section class="product-list">
+                
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('https://i.imgur.com/elmas-rank-placeholder.png');"></div>
+                    <div class="product-content">
+                        <h3>Elmas Rankı</h3>
+                        <p style="color: var(--light-text-color);">Özel sohbet rengi, eşsiz tag, hızlı warp ve +30% EXP bonusu.</p>
+                        <span class="product-price">99.90 TL</span>
+                        <a href="#" class="button"><i class="fas fa-shopping-cart"></i> Satın Al</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('https://i.imgur.com/crate-key-placeholder.png');"></div>
+                    <div class="product-content">
+                        <h3>BoxPvP Anahtarı (x5)</h3>
+                        <p style="color: var(--light-text-color);">En nadir eşyaları düşürebileceğiniz 5 adet özel kasa anahtarı.</p>
+                        <span class="product-price">49.90 TL</span>
+                        <a href="#" class="button"><i class="fas fa-shopping-cart"></i> Satın Al</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('https://i.imgur.com/speed-kit-placeholder.png');"></div>
+                    <div class="product-content">
+                        <h3>Hız Kit-VIP</h3>
+                        <p style="color: var(--light-text-color);">Her 24 saatte bir alabileceğiniz özel hız ve atlama efektli set.</p>
+                        <span class="product-price">69.90 TL</span>
+                        <a href="#" class="button"><i class="fas fa-shopping-cart"></i> Satın Al</a>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('https://i.imgur.com/zumrut-rank-placeholder.png');"></div>
+                    <div class="product-content">
+                        <h3>Zümrüt Rankı</h3>
+                        <p style="color: var(--light-text-color);">Orta seviye avantajlar, özel /fly yetkisi ve özel araziler.</p>
+                        <span class="product-price">149.90 TL</span>
+                        <a href="#" class="button"><i class="fas fa-shopping-cart"></i> Satın Al</a>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+    </main>
+    
     <footer>
         <div class="container">
-            <p>&copy; 2023 VALORİA CRAFT. Tüm Hakları Saklıdır.</p>
-            <p>Made with ❤️ for the community.</p>
+            <div class="social-links">
+                <a href="https://discord.gg/valoria" target="_blank" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                <a href="https://twitter.com/valoriacraft" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://instagram.com/valoriacraft" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p>&copy; 2025 VALORİA CRAFT. Tüm hakları saklıdır. Destek için Discord'dan ulaşabilirsiniz.</p>
         </div>
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const boxpvpCategoryBox = document.getElementById('boxpvp-category-box');
-            const subCategorySelection = document.getElementById('sub-category-selection');
-            const productListing = document.getElementById('product-listing');
-            const subCategoryBoxes = document.querySelectorAll('.sub-category-box');
-            const productCards = document.querySelectorAll('.product-card');
+        // Mağaza Sayfası için basit kategori aktiflik JS'i
+        document.addEventListener('DOMContentLoaded', () => {
+            const categoryLinks = document.querySelectorAll('.category-list a');
 
-            // Başlangıçta sadece BOXPVP kutusunu göster
-            boxpvpCategoryBox.style.display = 'flex';
-            subCategorySelection.style.display = 'none';
-            productListing.style.display = 'none';
-
-            // BOXPVP kutusuna tıklama olayı
-            boxpvpCategoryBox.addEventListener('click', function() {
-                boxpvpCategoryBox.style.display = 'none'; // BOXPVP kutusunu gizle
-                subCategorySelection.style.display = 'grid'; // Alt kategori kutularını göster
-                productListing.style.display = 'none'; // Ürün listesini gizle
-            });
-
-            // Alt kategori kutularına tıklama olayı
-            subCategoryBoxes.forEach(box => {
-                box.addEventListener('click', function() {
-                    const selectedCategory = this.dataset.category;
-
-                    subCategorySelection.style.display = 'none'; // Alt kategori kutularını gizle
-                    productListing.style.display = 'grid'; // Ürün listesini göster
-
-                    // Ürünleri filtrele ve göster
-                    productCards.forEach(card => {
-                        if (card.dataset.category === selectedCategory) {
-                            card.style.display = 'flex';
-                        } else {
-                            card.style.display = 'none';
-                        }
-                    });
+            categoryLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    // Önceki aktifi kaldır
+                    categoryLinks.forEach(l => l.classList.remove('active'));
+                    // Yeniye aktifi ekle
+                    this.classList.add('active');
+                    
+                    // Normalde burada JavaScript ile ürünleri filtreleme yapılırdı
+                    console.log(`Kategoriye tıklandı: ${this.textContent.trim()}`);
                 });
             });
-
-            // "Mağaza" linkinin aktif görünmesini sağla
-            const currentPath = window.location.pathname.split('/').pop();
-            if (currentPath === 'store.html') {
-                const storeLink = document.querySelector('.nav-links a[href="store.html"]');
-                if (storeLink) {
-                    storeLink.classList.add('active');
-                }
-            }
         });
     </script>
 </body>
