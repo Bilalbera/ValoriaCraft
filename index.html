@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valoria Craft 1.20.1</title>
+    <title>VALORİA CRAFT | BoxPvP Sunucusu</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
@@ -360,6 +360,7 @@
         }
 
         .team-member img {
+            /* Resimler kaldırıldığı için sadece yer tutucu stilini koruyoruz */
             width: 120px;
             height: 120px;
             border-radius: 50%;
@@ -367,18 +368,11 @@
             border: 3px solid var(--accent-color);
             margin-bottom: 15px;
             box-shadow: 0 0 10px var(--accent-color);
-        }
-
-        .team-member h4 {
-            color: #fff;
-            font-size: 1.5em;
-            margin-bottom: 5px;
-            font-family: 'Orbitron', sans-serif;
-        }
-
-        .team-member p {
-            color: var(--text-color);
-            font-size: 0.95em;
+            /* Yer tutucu arka planı */
+            background-color: #333;
+            content: ''; /* Resmi sildiğimiz için content koyuyoruz */
+            display: block; 
+            margin: 0 auto 15px auto;
         }
 
         /* Haberler Bölümü Stili */
@@ -425,6 +419,8 @@
             height: 220px; /* Haber görseli için sabit yükseklik */
             object-fit: cover;
             border-bottom: 1px solid var(--border-color);
+            /* Yer tutucu arka planı */
+            background-color: #444;
         }
 
         .news-content {
@@ -770,41 +766,38 @@
                 <h2 class="section-title">Son Haberler</h2>
                 <div class="news-grid">
                     <div class="news-card">
-                        <img src="https://i.imgur.com/news_update_1.jpg" alt="Yeni Sezon Başladı" class="news-image">
-                        <div class="news-content">
+                        <div class="news-image"></div> <div class="news-content">
                             <h3>Yeni BoxPvP Sezonu Başladı!</h3>
                             <p>Büyük yeniliklerle dolu yeni BoxPvP sezonumuz yayında! Yeni harita, özel eşyalar ve daha fazlası sizi bekliyor.</p>
                             <div class="news-meta">
                                 <span><i class="fas fa-calendar-alt"></i> 10 Ekim 2023</span>
                                 <span><i class="fas fa-user"></i> AdminName</span>
                             </div>
-                            <a href="news-detail.html?id=1" class="read-more-button">Devamını Oku</a>
+                            <a href="#" class="read-more-button">Devamını Oku</a>
                         </div>
                     </div>
 
                     <div class="news-card">
-                        <img src="https://i.imgur.com/news_event_2.jpg" alt="Cadılar Bayramı Etkinliği" class="news-image">
-                        <div class="news-content">
+                        <div class="news-image"></div> <div class="news-content">
                             <h3>Cadılar Bayramı Özel Etkinliği!</h3>
                             <p>Korkunç indirimler ve sürpriz ödüllerle dolu Cadılar Bayramı etkinliğimiz başladı. Bu fırsatı kaçırmayın!</p>
                             <div class="news-meta">
                                 <span><i class="fas fa-calendar-alt"></i> 25 Ekim 2023</span>
                                 <span><i class="fas fa-user"></i> ModName</span>
                             </div>
-                            <a href="news-detail.html?id=2" class="read-more-button">Devamını Oku</a>
+                            <a href="#" class="read-more-button">Devamını Oku</a>
                         </div>
                     </div>
 
                     <div class="news-card">
-                        <img src="https://i.imgur.com/news_patch_3.jpg" alt="Güncelleme Notları" class="news-image">
-                        <div class="news-content">
+                        <div class="news-image"></div> <div class="news-content">
                             <h3>Sunucu Bakım ve Yama Notları</h3>
                             <p>Performans iyileştirmeleri ve küçük hata düzeltmeleri içeren son yama notlarımıza göz atın.</p>
                             <div class="news-meta">
                                 <span><i class="fas fa-calendar-alt"></i> 05 Kasım 2023</span>
                                 <span><i class="fas fa-user"></i> AdminName</span>
                             </div>
-                            <a href="news-detail.html?id=3" class="read-more-button">Devamını Oku</a>
+                            <a href="#" class="read-more-button">Devamını Oku</a>
                         </div>
                     </div>
                 </div>
@@ -822,7 +815,7 @@
                 </div>
 
                 <div id="kills" class="tab-content active">
-                    <table class="leaderboard-table">
+                    <table class="leaderboard-table" id="kills">
                         <thead>
                             <tr>
                                 <th>Sıra</th>
@@ -846,7 +839,7 @@
                 </div>
 
                 <div id="deaths" class="tab-content">
-                    <table class="leaderboard-table">
+                    <table class="leaderboard-table" id="deaths">
                         <thead>
                             <tr>
                                 <th>Sıra</th>
@@ -870,7 +863,7 @@
                 </div>
 
                 <div id="money" class="tab-content">
-                    <table class="leaderboard-table">
+                    <table class="leaderboard-table" id="money">
                         <thead>
                             <tr>
                                 <th>Sıra</th>
@@ -918,22 +911,22 @@
                 <h2 class="section-title">Ekibimiz</h2>
                 <div class="team-grid">
                     <div class="team-member">
-                        <img src="https://i.imgur.com/admin_skin_placeholder.png" alt="Admin Resmi">
+                        <div class="team-member-img-placeholder"></div>
                         <h4>AdminNick1</h4>
                         <p>Kurucu & Geliştirici</p>
                     </div>
                     <div class="team-member">
-                        <img src="https://i.imgur.com/admin_skin_placeholder.png" alt="Admin Resmi">
+                        <div class="team-member-img-placeholder"></div>
                         <h4>AdminNick2</h4>
                         <p>Yönetici</p>
                     </div>
                     <div class="team-member">
-                        <img src="https://i.imgur.com/mod_skin_placeholder.png" alt="Moderatör Resmi">
+                        <div class="team-member-img-placeholder"></div>
                         <h4>ModNick1</h4>
                         <p>Moderatör</p>
                     </div>
                     <div class="team-member">
-                        <img src="https://i.imgur.com/mod_skin_placeholder.png" alt="Moderatör Resmi">
+                        <div class="team-member-img-placeholder"></div>
                         <h4>ModNick2</h4>
                         <p>Moderatör</p>
                     </div>
@@ -961,9 +954,11 @@
             const sections = document.querySelectorAll('section');
 
             function changeLinkState() {
+                // Header yüksekliğini dikkate alarak ayarla
+                const headerHeight = 97; 
                 let index = sections.length;
 
-                while(--index && window.scrollY + 97 < sections[index].offsetTop) {} // 97px header height
+                while(--index && window.scrollY + headerHeight < sections[index].offsetTop) {} 
 
                 navLinks.forEach((link) => link.classList.remove('active'));
                 if (navLinks[index]) {
@@ -981,7 +976,7 @@
                     const targetId = this.getAttribute('href').substring(1);
                     const targetSection = document.getElementById(targetId);
                     window.scrollTo({
-                        top: targetSection.offsetTop - 96, // Adjust for fixed header
+                        top: targetSection.offsetTop - 96, // Fixed header için ayar
                         behavior: 'smooth'
                     });
                 });
