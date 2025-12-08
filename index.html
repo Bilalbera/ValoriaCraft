@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VALORİA CRAFT | Minecraft Sunucusu</title>
+    <title>VALORİA CRAFT | Mağaza</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
@@ -102,140 +102,149 @@
             position: relative;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: var(--accent-color);
         }
         
-        /* Hero/Banner Bölümü */
-        .hero {
-            height: 500px;
-            /* Arka plan görseli artık açık renkte görünecek */
-            background: linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.6)), url('https://i.imgur.com/your-server-background-image.jpg') no-repeat center center/cover; 
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            border-bottom: 3px solid var(--accent-color);
-        }
-
-        .hero h1 {
-            font-size: 4em;
-            margin-bottom: 5px;
-            color: var(--accent-hover); /* Daha koyu mavi */
-            text-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
-        }
-
-        .hero p {
-            font-size: 1.3em;
-            margin-bottom: 30px;
-            color: var(--text-color);
-        }
-
-        .ip-box {
+        /* Banner/Hero Başlık */
+        .page-banner {
             background-color: var(--secondary-bg-color);
-            padding: 15px 30px;
-            border-radius: 8px;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.5em;
-            font-weight: bold;
-            display: inline-block;
-            border: 2px solid var(--accent-color);
-            box-shadow: 0 0 10px rgba(0, 123, 255, 0.4);
-            cursor: pointer;
-            color: var(--text-color);
-            transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease;
-        }
-
-        .ip-box:hover {
-            background-color: var(--accent-color);
-            color: #ffffff; /* Hover'da beyaz metin */
-            transform: scale(1.05);
-        }
-
-        /* Oyun Modları Bölümü */
-        #gamemodes {
-            padding: 80px 0;
-            background-color: var(--main-bg-color);
-        }
-
-        .section-title {
+            padding: 60px 0 40px 0;
             text-align: center;
-            font-size: 3em;
-            margin-bottom: 60px;
-            position: relative;
+            border-bottom: 2px solid var(--border-color);
+            box-shadow: 0 2px 5px var(--shadow-color);
+        }
+
+        .page-banner h1 {
+            font-size: 3.5em;
+            color: var(--accent-hover);
+            margin-bottom: 5px;
+        }
+
+        .page-banner p {
+            font-size: 1.1em;
+            color: var(--light-text-color);
+        }
+
+        /* Mağaza İçeriği */
+        #store-content {
+            display: flex;
+            padding: 40px 0;
         }
         
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background-color: var(--accent-color);
-            border-radius: 2px;
+        /* Sidebar (Oyun Modları) */
+        .sidebar {
+            width: 250px;
+            margin-right: 30px;
+            padding: 20px;
+            background-color: var(--secondary-bg-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            height: fit-content;
+        }
+        
+        .sidebar h3 {
+            font-size: 1.5em;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        
+        .mode-selection-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .mode-selection-list li {
+            margin-bottom: 10px;
+        }
+        
+        .mode-selection-list a {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            background-color: var(--main-bg-color);
+            border-radius: 8px;
+            color: var(--text-color);
+            font-weight: 700;
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+            border: 1px solid var(--border-color);
         }
 
-        .mode-grid {
+        .mode-selection-list a i {
+            margin-right: 10px;
+            color: var(--accent-color);
+        }
+        
+        .mode-selection-list a:hover, .mode-selection-list a.active {
+            background-color: var(--accent-color);
+            color: #ffffff;
+            border-color: var(--accent-hover);
+            transform: translateX(5px);
+        }
+        .mode-selection-list a:hover i, .mode-selection-list a.active i {
+            color: #ffffff;
+        }
+
+        /* Ürün Listesi */
+        .product-list {
+            flex-grow: 1;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
-
-        .mode-card {
+        /* Gizli modlar */
+        .product-list .product-card:not(.active) {
+            display: none;
+        }
+        .product-list .product-card.active {
+            display: block;
+        }
+        
+        .product-card {
             background-color: var(--secondary-bg-color);
             border-radius: 12px;
             overflow: hidden;
             border: 1px solid var(--border-color);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); 
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
         }
 
-        .mode-card:hover {
+        .product-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
         }
 
-        .mode-image {
+        .product-image {
             width: 100%;
             height: 200px;
-            background-color: #ccc; /* Resim yoksa yer tutucu renk */
+            background-color: #ccc; /* Yer tutucu renk */
             background-size: cover;
             background-position: center;
-            /* Alt kısım için mavi vurgu */
             border-bottom: 3px solid var(--accent-color);
+            /* Örnek Görsel Yer Tutucuları */
+            background-image: url('https://i.imgur.com/product-image-placeholder.png');
+        }
+
+        .product-content {
+            padding: 20px;
         }
         
-        /* Arka Plan Resimleri (Yer tutucu olarak) */
-        .mode-image.boxpvp { 
-            background-image: linear-gradient(rgba(255,255,255,0.4), rgba(255,255,255,0.4)), url('https://i.imgur.com/boxpvp-image-placeholder.jpg'); 
-        }
-        .mode-image.survival { 
-            background-image: linear-gradient(rgba(255,255,255,0.4), rgba(255,255,255,0.4)), url('https://i.imgur.com/survival-image-placeholder.jpg'); 
-        }
-        .mode-image.skyblock { 
-            background-image: linear-gradient(rgba(255,255,255,0.4), rgba(255,255,255,0.4)), url('https://i.imgur.com/skyblock-image-placeholder.jpg'); 
-        }
-
-        .mode-content {
-            padding: 25px;
-            text-align: center;
-        }
-
-        .mode-content h3 {
-            font-size: 2em;
-            margin-top: 0;
-            color: var(--accent-color);
-        }
-
-        .mode-content p {
-            font-size: 0.95em;
-            margin-bottom: 20px;
-            color: var(--light-text-color);
+        .product-content h3 {
+            font-size: 1.8em;
+            margin-bottom: 5px;
+            color: var(--text-color);
         }
         
+        .product-price {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: #d9534f; /* Kırmızı fiyat vurgusu */
+            margin-bottom: 15px;
+            display: block;
+        }
+
         .button {
             display: inline-block;
             background-color: var(--accent-color);
@@ -252,7 +261,7 @@
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
-
+        
         /* Footer */
         footer {
             background-color: var(--secondary-bg-color);
@@ -274,24 +283,21 @@
         }
         
         /* Responsive */
-        @media (max-width: 768px) {
-            .navbar {
+        @media (max-width: 992px) {
+            #store-content {
                 flex-direction: column;
             }
-            .nav-links {
-                margin-top: 15px;
-                justify-content: center;
+            .sidebar {
+                width: 100%;
+                margin-right: 0;
+                margin-bottom: 30px;
             }
-            .nav-links li {
-                margin: 0 10px;
+            .product-list {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             }
-            .hero h1 {
-                font-size: 3em;
-            }
-            .ip-box {
-                font-size: 1.2em;
-            }
-            .section-title {
+        }
+        @media (max-width: 576px) {
+            .page-banner h1 {
                 font-size: 2.5em;
             }
         }
@@ -300,11 +306,11 @@
 <body>
     <header>
         <div class="navbar container">
-            <a href="#home" class="logo">VALORİA<span>CRAFT</span></a>
+            <a href="index.html" class="logo">VALORİA<span>CRAFT</span></a>
             <nav>
                 <ul class="nav-links">
-                    <li><a href="#gamemodes">Oyun Modları</a></li>
-                    <li><a href="store.html">Mağaza</a></li>
+                    <li><a href="index.html#gamemodes">Oyun Modları</a></li>
+                    <li><a href="store.html" class="active">Mağaza</a></li>
                     <li><a href="leaderboard.html">Sıralamalar</a></li>
                     <li><a href="https://discord.gg/valoria" target="_blank">Discord</a></li>
                 </ul>
@@ -313,49 +319,90 @@
     </header>
 
     <main>
-        <section id="home" class="hero">
-            <h1>VALORİA CRAFT</h1>
-            <p>Eşsiz BoxPvP, Survival ve SkyBlock Deneyimleri Tek Adreste!</p>
-            <div class="ip-box" id="ip-display">PLAY.VALORIACRAFT.COM</div>
+        <section class="page-banner">
+            <h1>PREMIUM MAĞAZA</h1>
+            <p>Sunucuya destek ol ve oyun deneyimini kişiselleştir!</p>
         </section>
 
-        <section id="gamemodes">
-            <div class="container">
-                <h2 class="section-title">Oyun Modlarımız</h2>
+        <div id="store-content" class="container">
+            
+            <aside class="sidebar">
+                <h3>Oyun Modları</h3>
+                <ul class="mode-selection-list">
+                    <li><a href="#" data-mode="all" class="active"><i class="fas fa-boxes"></i> Tüm Modlar</a></li>
+                    <li><a href="#" data-mode="boxpvp"><i class="fas fa-cube"></i> BoxPvP</a></li>
+                    <li><a href="#" data-mode="survival"><i class="fas fa-tree"></i> Survival</a></li>
+                    <li><a href="#" data-mode="skyblock"><i class="fas fa-cloud"></i> SkyBlock</a></li>
+                </ul>
                 
-                <div class="mode-grid">
-                    
-                    <div class="mode-card">
-                        <div class="mode-image boxpvp"></div>
-                        <div class="mode-content">
-                            <h3>BoxPvP</h3>
-                            <p>Kendi küçük kutunuzda güçlü rakiplerle savaşın, liderlik tablolarında zirveye tırmanın ve özel eşyaların sahibi olun. PvP becerilerinizi sergileyin!</p>
-                            <a href="#" class="button">Daha Fazla Bilgi</a>
-                        </div>
-                    </div>
-                    
-                    <div class="mode-card">
-                        <div class="mode-image survival"></div>
-                        <div class="mode-content">
-                            <h3>Survival</h3>
-                            <p>Sıfırdan başlayarak destansı yapılar inşa edin, arkadaşlarınızla birleşin ve vahşi doğada hayatta kalın. Tamamen özgür bir dünya!</p>
-                            <a href="#" class="button">Daha Fazla Bilgi</a>
-                        </div>
-                    </div>
-                    
-                    <div class="mode-card">
-                        <div class="mode-image skyblock"></div>
-                        <div class="mode-content">
-                            <h3>SkyBlock</h3>
-                            <p>Gökyüzündeki küçük bir adada kaynaklarınızı yönetin, adanızı büyütün ve diğer oyuncularla ticaret yapın. Sınırsız yaratıcılık ve strateji!</p>
-                            <a href="#" class="button">Daha Fazla Bilgi</a>
-                        </div>
-                    </div>
+                <h3 style="margin-top: 25px;">Bilgilendirme</h3>
+                <p style="font-size: 0.9em; color: var(--light-text-color);">Tüm ödemeler güvenli altyapılar üzerinden gerçekleşir. Satın aldığınız ürünler anında hesabınıza yüklenir.</p>
+            </aside>
 
+            <section class="product-list" id="product-grid">
+                
+                <div class="product-card active" data-mode="boxpvp all">
+                    <div class="product-image" style="background-image: url('https://i.imgur.com/boxpvp-rank-placeholder.png');"></div>
+                    <div class="product-content">
+                        <h3>BoxPvP Kral Rankı</h3>
+                        <p style="color: var(--light-text-color);">PvP'de üstünlük, özel kitler ve BoxPvP'ye özgü yetkiler.</p>
+                        <span class="product-price">129.90 TL</span>
+                        <a href="#" class="button"><i class="fas fa-shopping-cart"></i> Satın Al</a>
+                    </div>
                 </div>
-            </div>
-        </section>
 
+                <div class="product-card active" data-mode="boxpvp all">
+                    <div class="product-image" style="background-image: url('https://i.imgur.com/crate-key-placeholder.png');"></div>
+                    <div class="product-content">
+                        <h3>Efsane Kasa Anahtarı (x5)</h3>
+                        <p style="color: var(--light-text-color);">BoxPvP'deki en güçlü eşyaları düşürebileceğiniz kasa anahtarları.</p>
+                        <span class="product-price">49.90 TL</span>
+                        <a href="#" class="button"><i class="fas fa-shopping-cart"></i> Satın Al</a>
+                    </div>
+                </div>
+                
+                <div class="product-card active" data-mode="survival all">
+                    <div class="product-image" style="background-image: url('https://i.imgur.com/survival-vip-placeholder.png');"></div>
+                    <div class="product-content">
+                        <h3>Survival VIP</h3>
+                        <p style="color: var(--light-text-color);">Özel arazi koruması, /fly yetkisi ve Survival'a özel kitler.</p>
+                        <span class="product-price">99.90 TL</span>
+                        <a href="#" class="button"><i class="fas fa-shopping-cart"></i> Satın Al</a>
+                    </div>
+                </div>
+
+                <div class="product-card active" data-mode="survival all">
+                    <div class="product-image" style="background-image: url('https://i.imgur.com/money-bag-placeholder.png');"></div>
+                    <div class="product-content">
+                        <h3>100.000 Survival Parası</h3>
+                        <p style="color: var(--light-text-color);">Oyun içi ekonomide güçlü bir başlangıç yapın.</p>
+                        <span class="product-price">29.90 TL</span>
+                        <a href="#" class="button"><i class="fas fa-shopping-cart"></i> Satın Al</a>
+                    </div>
+                </div>
+                
+                <div class="product-card active" data-mode="skyblock all">
+                    <div class="product-image" style="background-image: url('https://i.imgur.com/skyblock-pro-placeholder.png');"></div>
+                    <div class="product-content">
+                        <h3>SkyBlock PRO Rankı</h3>
+                        <p style="color: var(--light-text-color);">Ada seviyenizi hızlandıran özel bonuslar ve komutlar.</p>
+                        <span class="product-price">89.90 TL</span>
+                        <a href="#" class="button"><i class="fas fa-shopping-cart"></i> Satın Al</a>
+                    </div>
+                </div>
+
+                <div class="product-card active" data-mode="skyblock all">
+                    <div class="product-image" style="background-image: url('https://i.imgur.com/spawner-placeholder.png');"></div>
+                    <div class="product-content">
+                        <h3>Özel Mob Spawner (x3)</h3>
+                        <p style="color: var(--light-text-color);">SkyBlock adanız için 3 adet rastgele mob spawner.</p>
+                        <span class="product-price">59.90 TL</span>
+                        <a href="#" class="button"><i class="fas fa-shopping-cart"></i> Satın Al</a>
+                    </div>
+                </div>
+                
+            </section>
+        </div>
     </main>
     
     <footer>
@@ -365,25 +412,46 @@
                 <a href="https://twitter.com/valoriacraft" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                 <a href="https://instagram.com/valoriacraft" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
             </div>
-            <p>&copy; 2025 VALORİA CRAFT. Tüm hakları saklıdır.</p>
+            <p>&copy; 2025 VALORİA CRAFT. Tüm hakları saklıdır. Destek için Discord'dan ulaşabilirsiniz.</p>
         </div>
     </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const ipDisplay = document.getElementById('ip-display');
-            if (ipDisplay) {
-                ipDisplay.addEventListener('click', function() {
-                    const ip = this.textContent;
-                    navigator.clipboard.writeText(ip).then(() => {
-                        const originalText = this.textContent;
-                        this.textContent = 'Kopyalandı!';
-                        setTimeout(() => {
-                            this.textContent = originalText;
-                        }, 1500);
-                    }).catch(err => {
-                        console.error('IP kopyalanırken hata oluştu:', err);
-                    });
+            const modeLinks = document.querySelectorAll('.mode-selection-list a');
+            const productCards = document.querySelectorAll('.product-card');
+
+            // Başlangıçta tüm kartları göster (data-mode="all" olduğu için)
+            filterProducts('all');
+
+            modeLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Aktif sınıfı güncelle
+                    modeLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const selectedMode = this.getAttribute('data-mode');
+                    filterProducts(selectedMode);
+                });
+            });
+
+            function filterProducts(mode) {
+                productCards.forEach(card => {
+                    // Kartın hangi modlara ait olduğunu kontrol et
+                    const modes = card.getAttribute('data-mode').split(' ');
+
+                    if (mode === 'all' || modes.includes(mode)) {
+                        // Eğer "Tüm Modlar" seçiliyse veya kart seçilen modu içeriyorsa göster
+                        card.style.display = 'block';
+                        // Kartın "active" sınıfını dinamik olarak ekle/kaldır (CSS'te görünürlüğü kontrol etmek için)
+                        card.classList.add('active'); 
+                    } else {
+                        // Aksi takdirde gizle
+                        card.style.display = 'none';
+                        card.classList.remove('active');
+                    }
                 });
             }
         });
